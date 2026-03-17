@@ -4,14 +4,13 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import Image from 'next/image';
 
-// Animation Variant for the "Blur Reveal"
+// Animation Variant for the "Mask Reveal"
 const textReveal: Variants = {
-  hidden: { filter: "blur(15px)", opacity: 0, y: 50 },
+  hidden: { y: "110%", opacity: 0 },
   visible: { 
-    filter: "blur(0px)", 
+    y: "0%",
     opacity: 1, 
-    y: 0,
-    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
   }
 };
 
@@ -22,6 +21,15 @@ const containerVariants: Variants = {
     }
   }
 };
+
+// Helper for masking lines of text
+const MaskedLine = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <span className={`block overflow-hidden ${className}`}>
+    <motion.span className="block" variants={textReveal}>
+      {children}
+    </motion.span>
+  </span>
+);
 
 export default function PersonalIntro() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -52,27 +60,36 @@ export default function PersonalIntro() {
               className="object-cover object-center"
               priority
             />
-            {/* Optional overlay for better text contrast if needed, though mix-blend handles it */}
-            <div className="absolute inset-0 bg-black/10" />
           </div>
         </motion.div>
 
-        {/* THE TEXT (Overlapping Headline + Right-side Body) */}
+        {/* THE TEXT */}
         <motion.div 
-          className="col-span-7 col-start-5 relative z-20 flex flex-col justify-center"
+          className="col-span-12 md:col-span-7 md:col-start-5 absolute md:relative z-20 flex flex-col justify-center h-full px-6 md:px-0 mix-blend-difference"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
+          viewport={{ once: true, margin: "-20%" }}
           variants={containerVariants}
         >
+          {/* Overlapping Headline */}
+          <div className="mb-12 whitespace-nowrap -ml-[10vw] z-30">
+            <MaskedLine className="text-[12vw] font-bold font-sans tracking-tighter leading-[0.85] text-white">
+              CREATIVE
+            </MaskedLine>
+            <MaskedLine className="text-[12vw] font-serif italic tracking-tight leading-[0.85] text-white/90">
+              DEVELOPER
+            </MaskedLine>
+          </div>
            
-           {/* BODY (Frames Image on Right) */}
-           <motion.div 
-              variants={textReveal} 
-              className="pl-10 md:pl-20 max-w-xl text-lg md:text-xl text-white leading-relaxed"
-           >
-
-           </motion.div>
+          {/* BODY (Frames Image on Right) */}
+          <div className="pl-10 md:pl-20 max-w-xl text-lg md:text-xl text-white/80 leading-relaxed font-sans z-20 space-y-6">
+            <MaskedLine>I engineer high-end digital experiences</MaskedLine>
+            <MaskedLine>that blend performance with aesthetics.</MaskedLine>
+            <br/>
+            <MaskedLine>Specializing in Next.js, WebGL, and</MaskedLine>
+            <MaskedLine>fluid motion systems, bridging the</MaskedLine>
+            <MaskedLine>gap between design and mathematics.</MaskedLine>
+          </div>
         </motion.div>
 
       </div>

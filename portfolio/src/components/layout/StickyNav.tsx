@@ -30,7 +30,7 @@ export default function StickyNav() {
   return (
     <>
       <motion.div 
-        className="sticky top-0 z-50 w-full px-8 md:px-20 py-6 grid grid-cols-3 items-center mix-blend-difference text-white bg-black/50 backdrop-blur-md border-b border-white/10"
+        className="fixed top-0 left-0 right-0 z-50 w-full px-8 md:px-20 py-6 grid grid-cols-3 items-center mix-blend-difference text-white bg-black/50 backdrop-blur-md border-b border-white/10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}

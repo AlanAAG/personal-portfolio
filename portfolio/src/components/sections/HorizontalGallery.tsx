@@ -45,13 +45,13 @@ export default function HorizontalGallery() {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-black">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-20 px-20">
-          <div className="flex flex-col justify-center min-w-[400px]">
-            <h2 className="text-[6vw] font-bold text-white font-inter leading-none mb-4">
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-20 px-20 shrink-0">
+          <div className="flex flex-col justify-center min-w-[40vw]">
+            <h2 className="text-[10vw] font-bold text-white font-sans leading-none mb-4 tracking-tighter">
               SELECTED
             </h2>
-            <h2 className="text-[6vw] font-serif italic text-white/50 font-fraunces leading-none">
+            <h2 className="text-[10vw] font-serif italic text-white/50 leading-none tracking-tight">
               WORKS
             </h2>
           </div>
@@ -60,12 +60,12 @@ export default function HorizontalGallery() {
             <div key={i} className="relative h-[60vh] w-[40vw] min-w-[400px] bg-neutral-900 rounded-3xl border border-white/10 overflow-hidden group">
               <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-3xl font-bold text-white">{project.title}</h3>
+                  <h3 className="text-3xl font-bold text-white font-sans">{project.title}</h3>
                   <span className="font-mono text-xs text-white/60 border border-white/20 px-2 py-1 rounded-full">{project.category}</span>
                 </div>
                 
                 <div>
-                  <p className="text-white/80 mb-6 text-lg">{project.description}</p>
+                  <p className="text-white/80 mb-6 text-lg font-sans">{project.description}</p>
                   <div className="flex gap-2 flex-wrap">
                     {project.stack.map((tech, j) => (
                       <span key={j} className="text-xs font-mono text-white/40 bg-white/5 px-2 py-1 rounded">
@@ -77,10 +77,13 @@ export default function HorizontalGallery() {
               </div>
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-              {/* Placeholder for project image */}
+              {/* Subtle noise in cards instead of flat colors */}
+              <div className="absolute inset-0 z-[1] opacity-20 mix-blend-overlay mix-blend-difference" style={{ backgroundColor: project.color }} />
               <div className="absolute inset-0 bg-neutral-800 group-hover:scale-105 transition-transform duration-700" />
             </div>
           ))}
+          {/* Padding at the end */}
+          <div className="min-w-[40vw]" />
         </motion.div>
       </div>
     </section>

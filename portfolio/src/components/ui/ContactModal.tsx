@@ -1,28 +1,62 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import MagneticButton from '@/components/ui/MagneticButton';
 
 export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
+        // Backdrop — clicking outside the card closes the modal
+        // isolation: isolate prevents mix-blend-mode from bleeding through
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md"
+          style={{ isolation: 'isolate' }}
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 backdrop-blur-md"
+          onMouseDown={(e) => {
+            // Only close if the backdrop itself was clicked, not a child
+            if (e.target === e.currentTarget) onClose();
+          }}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="relative w-[90vw] h-[90vh] bg-neutral-900/80 border border-white/10 rounded-3xl p-10 md:p-20 overflow-hidden shadow-2xl"
+            initial={{ scale: 0.92, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.92, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+            className="relative w-[90vw] h-[90vh] bg-neutral-900 border border-white/10 rounded-3xl p-10 md:p-20 overflow-y-auto shadow-2xl"
+            // Prevent backdrop click firing when clicking inside the card
+            onMouseDown={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={onClose}
-              className="absolute top-10 right-10 p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="absolute top-8 right-8 p-2 hover:bg-white/10 rounded-full transition-colors z-10"
+              aria-label="Close modal"
             >
               <X className="w-6 h-6 text-white" />
             </button>
@@ -48,7 +82,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                         <input type="email" required className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors" placeholder="john@example.com" />
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
                         <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Organization</label>
@@ -62,7 +96,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
 
                     <div className="group">
                       <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Message *</label>
-                      <textarea required rows={4} className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors resize-none" placeholder="Tell me about your project..."></textarea>
+                      <textarea required rows={4} className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors resize-none" placeholder="Tell me about your project..." />
                     </div>
 
                     <div className="pt-4">
