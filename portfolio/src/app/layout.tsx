@@ -4,7 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/layout/Header";
-import ChatBubble from "@/components/ui/ChatBubble";
+import SocialLinks from "@/components/ui/SocialLinks";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import StickyNav from "@/components/layout/StickyNav";
 import FluidBackground from "@/components/canvas/FluidBackground";
@@ -44,7 +44,7 @@ export default function RootLayout({
         <FluidBackground />
         <NoiseCanvas />
         <CustomCursor />
-        <ChatBubble />
+        <SocialLinks />
         <ScrollProgress />
         <StickyNav />
         <SmoothScroll>

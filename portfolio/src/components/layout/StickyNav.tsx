@@ -30,24 +30,15 @@ export default function StickyNav() {
   return (
     <>
       <motion.div 
-        className="fixed top-0 left-0 right-0 z-50 w-full px-8 md:px-20 py-6 grid grid-cols-3 items-center mix-blend-difference text-white bg-black/50 backdrop-blur-md border-b border-white/10"
+        className="fixed top-0 left-0 right-0 z-50 w-full px-8 md:px-20 py-6 flex justify-between items-center mix-blend-difference text-white bg-black/50 backdrop-blur-md border-b border-white/10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
       >
         {/* Left: Location & Time */}
-        <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest justify-start">
+        <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest">
           <span>Dubai, UAE</span>
           <span>{time}</span>
-        </div>
-
-        {/* Center: Socials */}
-        <div className="flex items-center justify-center gap-4 font-mono text-xs uppercase tracking-widest">
-          <a href="#" className="hover:text-white/50 transition-colors">Instagram</a>
-          <span className="text-white/30">/</span>
-          <a href="#" className="hover:text-white/50 transition-colors">Behance</a>
-          <span className="text-white/30">/</span>
-          <a href="#" className="hover:text-white/50 transition-colors">LinkedIn</a>
         </div>
 
         {/* Right: Navigation */}
