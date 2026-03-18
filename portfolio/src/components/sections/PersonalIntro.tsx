@@ -1,56 +1,88 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 
-// Animation Variant for the "Mask Reveal"
-const textReveal: Variants = {
-  hidden: { y: "110%", opacity: 0 },
-  visible: { 
-    y: "0%",
-    opacity: 1, 
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
-  }
+const ScrollRevealWord = ({
+  word,
+  progress,
+  startPoint,
+  endPoint
+}: {
+  word: string;
+  progress: MotionValue<number>;
+  startPoint: number;
+  endPoint: number;
+}) => {
+  const opacity = useTransform(progress, [startPoint, endPoint], [0.15, 1]);
+  const y = useTransform(progress, [startPoint, endPoint], [15, 0]);
+
+  return (
+    <span className="inline-block mr-[0.25em] mb-[0.1em]">
+      <motion.span className="inline-block" style={{ opacity, y }}>
+        {word}
+      </motion.span>
+    </span>
+  );
 };
 
-const containerVariants: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+const ScrollRevealText = ({
+  text,
+  progress,
+  className = '',
+  delayStart = 0.2, // When this block starts revealing
+  delayEnd = 0.6    // When this block finishes revealing
+}: {
+  text: string;
+  progress: MotionValue<number>;
+  className?: string;
+  delayStart?: number;
+  delayEnd?: number;
+}) => {
+  const words = text.split(' ');
+  const step = (delayEnd - delayStart) / words.length;
 
-// Helper for masking lines of text
-const MaskedLine = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-  <span className={`block overflow-hidden ${className}`}>
-    <motion.span className="block" variants={textReveal}>
-      {children}
-    </motion.span>
-  </span>
-);
+  return (
+    <span className={`inline ${className}`}>
+      {words.map((word, i) => {
+        const startPoint = delayStart + i * step;
+        const endPoint = startPoint + step;
+        return (
+          <ScrollRevealWord
+            key={i}
+            word={word}
+            progress={progress}
+            startPoint={startPoint}
+            endPoint={endPoint}
+          />
+        );
+      })}
+    </span>
+  );
+};
 
 export default function PersonalIntro() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    // Start revealing slightly below center to ensure full length tracks smoothly through
+    offset: ["start center", "end end"] 
   });
 
   // Parallax for the image - moves slower than text
   const yImage = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <section ref={containerRef} className="min-h-screen bg-black text-white py-20 relative overflow-hidden">
-      {/* Grid Container */}
-      <div className="grid grid-cols-12 w-full h-full">
+    <section ref={containerRef} className="min-h-screen bg-transparent text-white pt-[20vh] pb-32 relative overflow-hidden">
+      
+      {/* Wrapper forcing content inside frame limits */}
+      <div className="w-full max-w-screen-xl mx-auto px-6 md:px-12 relative z-20 mix-blend-difference">
         
-        {/* THE IMAGE (Far Left) */}
-        {/* Occupies roughly 40-45% of width (5/12 columns) */}
+        {/* THE IMAGE (Floated Left so text wraps around it natively) */}
         <motion.div 
           style={{ y: yImage }} 
-          className="col-span-5 col-start-1 relative z-10 h-[85vh] w-full"
+          className="float-none lg:float-left relative z-10 w-full lg:w-[45%] h-[50vh] md:h-[65vh] lg:mr-16 mb-12 rounded-2xl overflow-hidden shadow-2xl"
         >
           <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 ease-out">
             <Image
@@ -64,34 +96,30 @@ export default function PersonalIntro() {
         </motion.div>
 
         {/* THE TEXT */}
-        <motion.div 
-          className="col-span-12 md:col-span-7 md:col-start-5 absolute md:relative z-20 flex flex-col justify-center h-full px-6 md:px-0 mix-blend-difference"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-20%" }}
-          variants={containerVariants}
-        >
-          {/* Overlapping Headline */}
-          <div className="mb-12 whitespace-nowrap -ml-[10vw] z-30">
-            <MaskedLine className="text-[12vw] font-bold font-sans tracking-tighter leading-[0.85] text-white">
-              CREATIVE
-            </MaskedLine>
-            <MaskedLine className="text-[12vw] font-serif italic tracking-tight leading-[0.85] text-white/90">
-              DEVELOPER
-            </MaskedLine>
+        <div className="pt-4 md:pt-10 z-20">
+          
+          <div className="mb-12 flex flex-col font-sans font-bold tracking-tighter text-[14vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.85] text-white">
+            <div className="block">
+              <ScrollRevealText text="CREATIVE" progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
+            </div>
+            <div className="block">
+              <ScrollRevealText text="DEVELOPER" progress={scrollYProgress} delayStart={0.1} delayEnd={0.3} className="font-serif italic tracking-tight font-normal text-white/90" />
+            </div>
           </div>
            
-          {/* BODY (Frames Image on Right) */}
-          <div className="pl-10 md:pl-20 max-w-xl text-lg md:text-xl text-white/80 leading-relaxed font-sans z-20 space-y-6">
-            <MaskedLine>I engineer high-end digital experiences</MaskedLine>
-            <MaskedLine>that blend performance with aesthetics.</MaskedLine>
-            <br/>
-            <MaskedLine>Specializing in Next.js, WebGL, and</MaskedLine>
-            <MaskedLine>fluid motion systems, bridging the</MaskedLine>
-            <MaskedLine>gap between design and mathematics.</MaskedLine>
+          {/* BODY */}
+          <div className="text-xl md:text-3xl lg:text-[2.2rem] leading-[1.3] text-white font-sans uppercase">
+            <ScrollRevealText 
+              text="I ENGINEER HIGH-END DIGITAL EXPERIENCES THAT BLEND PERFORMANCE WITH AESTHETICS. SPECIALIZING IN NEXT.JS, WEBGL, AND FLUID MOTION SYSTEMS, BRIDGING THE GAP BETWEEN DESIGN AND MATHEMATICS." 
+              progress={scrollYProgress} 
+              delayStart={0.2} 
+              delayEnd={0.9} 
+            />
           </div>
-        </motion.div>
+        </div>
 
+        {/* Clear the float so parent container captures true height */}
+        <div className="clear-both"></div>
       </div>
     </section>
   );

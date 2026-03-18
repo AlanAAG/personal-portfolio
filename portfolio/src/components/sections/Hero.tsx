@@ -94,11 +94,8 @@ function AnimatedWord({
   className?: string;
 }) {
   return (
-    <motion.span
+    <span
       className={`inline-flex overflow-visible ${className ?? ''}`}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
       aria-label={text}
     >
       {text.split('').map((char, i) => (
@@ -106,14 +103,20 @@ function AnimatedWord({
           <MagneticElement className="pointer-events-auto" strength={0.4}>
             <motion.span
               className="inline-block"
-              variants={letterVariants}
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: '0%', opacity: 1 }}
+              transition={{
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.1 + i * 0.04,
+              }}
             >
               {char === ' ' ? '\u00A0' : char}
             </motion.span>
           </MagneticElement>
         </span>
       ))}
-    </motion.span>
+    </span>
   );
 }
 
@@ -122,7 +125,7 @@ function AnimatedWord({
 export default function Hero() {
   const { scrollY } = useScroll();
   // Transform scale and Y position based on global scroll
-  const yOffset = useTransform(scrollY, [0, 800], ["0vh", "-95vh"]);
+  const yOffset = useTransform(scrollY, [0, 800], ["0vh", "-91vh"]);
   const scale = useTransform(scrollY, [0, 800], [1, 0.15]);
 
   return (
