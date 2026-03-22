@@ -219,7 +219,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
         )}
         {data.mediaType === 'video' ? (
           <video
-            src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_1080/${data.mediaId || `experience_${index + 1}`}?v=5`}
+            src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
             autoPlay
             loop
             muted
@@ -228,10 +228,11 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
           />
         ) : (
           <Image
-            src={`${data.mediaId || `experience_${index + 1}`}?v=5`}
+            src={data.mediaId || `experience_${index + 1}`}
             alt={data.title}
             fill
             className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+            sizes="(max-width: 1024px) 100vw, 40vw"
           />
         )}
       </motion.div>

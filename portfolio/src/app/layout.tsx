@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import dynamic from 'next/dynamic';
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/layout/Header";
 import SocialLinks from "@/components/ui/SocialLinks";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import StickyNav from "@/components/layout/StickyNav";
-import FluidBackground from "@/components/canvas/FluidBackground";
-import NoiseCanvas from "@/components/canvas/NoiseCanvas";
 import Footer from "@/components/layout/Footer";
+
+// Dynamically import heavy canvas components to unblock LCP
+const FluidBackground = dynamic(() => import("@/components/canvas/FluidBackground"), { ssr: false });
+const NoiseCanvas = dynamic(() => import("@/components/canvas/NoiseCanvas"), { ssr: false });
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,6 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white antialiased selection:bg-white/20`}
       >

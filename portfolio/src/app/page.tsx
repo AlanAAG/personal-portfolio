@@ -1,8 +1,10 @@
+import dynamic from 'next/dynamic';
 import Hero from "@/components/sections/Hero";
-import HorizontalGallery from "@/components/sections/HorizontalGallery";
-import PersonalIntro from "@/components/sections/PersonalIntro";
-import Skills from "@/components/sections/Skills";
-import GlobalMap from "@/components/sections/GlobalMap";
+
+const PersonalIntro = dynamic(() => import("@/components/sections/PersonalIntro"));
+const HorizontalGallery = dynamic(() => import("@/components/sections/HorizontalGallery"));
+const Skills = dynamic(() => import("@/components/sections/Skills"));
+const GlobalMap = dynamic(() => import("@/components/sections/GlobalMap"));
 
 export default function Home() {
   return (

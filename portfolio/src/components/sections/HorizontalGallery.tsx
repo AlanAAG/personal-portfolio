@@ -110,6 +110,7 @@ export default function HorizontalGallery() {
                     alt={project.title} 
                     fill 
                     className="object-cover object-center opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 ) : (
                   <div className="absolute inset-0 bg-neutral-800 group-hover:scale-105 transition-transform duration-700" />
@@ -125,6 +126,7 @@ export default function HorizontalGallery() {
               alt="Closing horizontal gallery block graphic" 
               fill 
               className="object-cover object-center transition-all duration-[1s] ease-out group-hover:scale-105"
+              sizes="(max-width: 768px) 50vw, 25vw"
             />
           </div>
           

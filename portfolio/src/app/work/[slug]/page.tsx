@@ -257,6 +257,8 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
                   alt={`${data.title} graphical asset ${i + 1}`}
                   fill
                   className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={i === 0}
                 />
               </div>
             ))}
