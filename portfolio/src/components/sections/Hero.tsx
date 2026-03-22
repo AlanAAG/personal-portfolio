@@ -156,16 +156,7 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Year / location tag */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="absolute bottom-8 right-10 z-10 font-mono text-[10px] text-white/25 tracking-wider text-right"
-        >
-          <p>© 2026</p>
-          <p>WORLDWIDE</p>
-        </motion.div>
+        {/* The bottom right location tag was removed to prevent overlapping with the fixed social links */}
 
       </section>
 
@@ -199,8 +190,8 @@ export default function Hero() {
             className="flex items-center gap-6 pt-6 pb-2 pointer-events-auto"
           >
             <span className="h-[1px] w-12 bg-white/30" />
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 font-inter">
-              Creative Developer &amp; Full-Stack Engineer
+            <p className="text-xs uppercase tracking-[0.3em] text-white/50 font-inter text-center">
+              AI-Driven Technical Founder
             </p>
             <span className="h-[1px] w-12 bg-white/30" />
           </motion.div>

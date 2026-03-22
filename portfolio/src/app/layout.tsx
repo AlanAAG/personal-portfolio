@@ -9,6 +9,7 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import StickyNav from "@/components/layout/StickyNav";
 import FluidBackground from "@/components/canvas/FluidBackground";
 import NoiseCanvas from "@/components/canvas/NoiseCanvas";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -49,6 +50,7 @@ export default function RootLayout({
         <StickyNav />
         <SmoothScroll>
           {children}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

@@ -1,45 +1,45 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import MagneticButton from '@/components/ui/MagneticButton';
+import { useState } from 'react';
+import Link from 'next/link';
+import ContactModal from '@/components/ui/ContactModal';
 
 export default function Footer() {
-  return (
-    <footer className="relative h-screen bg-black text-white overflow-hidden flex flex-col justify-between p-8 md:p-20">
-      <div className="flex justify-between items-start z-10">
-        <div className="flex flex-col gap-2">
-          <h3 className="font-serif italic text-2xl md:text-4xl text-white/50">Contact</h3>
-          <a href="mailto:alanayalag@gmail.com" className="text-xl md:text-2xl hover:text-white/70 transition-colors">alanayalag@gmail.com</a>
-          <a href="https://linkedin.com/in/alan-ayala-garcia" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl hover:text-white/70 transition-colors">LinkedIn</a>
-          <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl hover:text-white/70 transition-colors">GitHub</a>
-        </div>
-        
-        <div className="text-right">
-           <p className="font-mono text-xs text-white/30 uppercase tracking-widest">© 2025 Alan Ayala</p>
-        </div>
-      </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const year = new Date().getFullYear();
 
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <div className="relative w-full h-full flex items-center justify-center">
-             <motion.div 
-               initial={{ opacity: 0, y: 100 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-               className="font-inter font-bold text-[35vw] leading-none text-[#2a1b3d] mix-blend-difference z-0 flex gap-[10vw]"
-             >
-                <span>A</span>
-                <span className="font-serif italic font-light">A</span>
-             </motion.div>
-             <motion.div 
-               initial={{ opacity: 0, y: 100 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-               className="absolute bottom-0 left-1/2 -translate-x-1/2 font-inter font-bold text-[35vw] leading-none text-white/5 z-0"
-             >
-                25
-             </motion.div>
+  return (
+    <>
+      <footer className="w-full bg-black text-white border-t border-white/10 py-12 px-6 md:px-12 z-40 relative">
+        <div className="max-w-screen-2xl mx-auto flex flex-col items-center justify-center gap-10">
+          
+          <div className="flex flex-col md:flex-row justify-between items-center w-full gap-8">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <span className="text-3xl font-bold font-sans tracking-tighter">ALAN AYALA</span>
+              <span className="text-sm font-mono text-white/50 tracking-widest uppercase mt-2">AI-Driven Technical Founder</span>
+            </div>
+
+            {/* Quick Navigation Links & Highlighted Contact Button */}
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50">
+              <Link href="/" className="hover:text-white transition-colors duration-300">Home</Link>
+              <Link href="/info" className="hover:text-white transition-colors duration-300">About Me</Link>
+              <button 
+                onClick={() => setIsModalOpen(true)} 
+                className="px-6 py-2.5 ml-0 md:ml-4 border border-white text-white font-bold rounded-full hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+
+          {/* Centered Copyright Below */}
+          <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase text-center mt-4">
+            © {year} Alan Ayala. All rights reserved.
+          </span>
+
         </div>
-      </div>
-    </footer>
+      </footer>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }

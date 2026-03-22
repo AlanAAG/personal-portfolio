@@ -76,18 +76,18 @@ export default function PersonalIntro() {
   return (
     <section ref={containerRef} className="min-h-screen bg-transparent text-white pt-[20vh] pb-32 relative overflow-hidden">
       
-      {/* Wrapper forcing content inside frame limits */}
-      <div className="w-full max-w-screen-xl mx-auto px-6 md:px-12 relative z-20 mix-blend-difference">
+      {/* Wrapper forcing content inside frame limits - NEW FLEX LAYOUT */}
+      <div className="w-full max-w-screen-xl mx-auto px-6 md:px-12 relative z-20 mix-blend-difference flex flex-col lg:flex-row gap-12 lg:gap-20 lg:items-center">
         
-        {/* THE IMAGE (Floated Left so text wraps around it natively) */}
+        {/* THE IMAGE (Left Column) */}
         <motion.div 
           style={{ y: yImage }} 
-          className="float-none lg:float-left relative z-10 w-full lg:w-[45%] h-[50vh] md:h-[65vh] lg:mr-16 mb-12 rounded-2xl overflow-hidden shadow-2xl"
+          className="relative z-10 w-full lg:w-1/2 h-[50vh] md:h-[65vh] lg:h-[75vh] rounded-2xl overflow-hidden shadow-2xl shrink-0"
         >
-          <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 ease-out">
+          <div className="relative w-full h-full">
             <Image
-              src="/images/profile.png"
-              alt="Alan Ayala"
+              src="dubai_2"
+              alt="Alan Ayala in Dubai"
               fill
               className="object-cover object-center"
               priority
@@ -95,31 +95,28 @@ export default function PersonalIntro() {
           </div>
         </motion.div>
 
-        {/* THE TEXT */}
-        <div className="pt-4 md:pt-10 z-20">
+        {/* THE TEXT (Right Column) */}
+        <div className="z-20 flex-1 flex flex-col justify-center">
           
-          <div className="mb-12 flex flex-col font-sans font-bold tracking-tighter text-[14vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.85] text-white">
+          <div className="mb-10 flex flex-col font-sans font-bold tracking-tighter text-[11vw] md:text-[6.5vw] lg:text-[5vw] leading-[0.9] text-white">
             <div className="block">
-              <ScrollRevealText text="CREATIVE" progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
+              <ScrollRevealText text="AI-DRIVEN" progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
             </div>
-            <div className="block">
-              <ScrollRevealText text="DEVELOPER" progress={scrollYProgress} delayStart={0.1} delayEnd={0.3} className="font-serif italic tracking-tight font-normal text-white/90" />
+            <div className="block lg:-ml-2 mt-2">
+              <ScrollRevealText text="TECHNICAL FOUNDER" progress={scrollYProgress} delayStart={0.1} delayEnd={0.3} className="font-serif italic tracking-tight font-normal text-white/90" />
             </div>
           </div>
            
-          {/* BODY */}
-          <div className="text-xl md:text-3xl lg:text-[2.2rem] leading-[1.3] text-white font-sans uppercase">
+          {/* BODY (Normalized Typography) */}
+          <div className="text-base md:text-xl lg:text-2xl leading-relaxed text-white/80 font-sans font-light">
             <ScrollRevealText 
-              text="I ENGINEER HIGH-END DIGITAL EXPERIENCES THAT BLEND PERFORMANCE WITH AESTHETICS. SPECIALIZING IN NEXT.JS, WEBGL, AND FLUID MOTION SYSTEMS, BRIDGING THE GAP BETWEEN DESIGN AND MATHEMATICS." 
+              text="I am a Management & Technology student at Tetr College of Business, currently navigating a global rotation across the UAE, India, and beyond. My work lives at the edge of Full-Stack Development and Venture Building. Whether I’m engineering scalable AI Tutor platforms or launching D2C brands in new markets, I am driven by a single goal: building products that solve real problems with elegant code." 
               progress={scrollYProgress} 
               delayStart={0.2} 
               delayEnd={0.9} 
             />
           </div>
         </div>
-
-        {/* Clear the float so parent container captures true height */}
-        <div className="clear-both"></div>
       </div>
     </section>
   );

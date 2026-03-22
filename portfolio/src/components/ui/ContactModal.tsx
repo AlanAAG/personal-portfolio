@@ -99,9 +99,9 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                       <textarea required rows={4} className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors resize-none" placeholder="Tell me about your project..." />
                     </div>
 
-                    <div className="pt-4">
+                    <div className="pt-4 pb-12 overflow-visible">
                       <MagneticButton>
-                        <button type="submit" className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-colors uppercase tracking-widest text-sm">
+                        <button type="submit" className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-colors uppercase tracking-widest text-sm relative z-10">
                           Send Message
                         </button>
                       </MagneticButton>
@@ -117,16 +117,16 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                     <a href="mailto:alanayalag@gmail.com" className="block text-xl md:text-2xl text-white hover:text-white/70 transition-colors">
                       alanayalag@gmail.com
                     </a>
-                    <p className="text-xl md:text-2xl text-white">+971 50 123 4567</p>
+                    <p className="text-xl md:text-2xl text-white">+52 5519361230</p>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">Socials</h3>
                   <div className="flex flex-col gap-4">
-                    <a href="#" className="text-lg text-white hover:text-white/70 transition-colors">LinkedIn</a>
-                    <a href="#" className="text-lg text-white hover:text-white/70 transition-colors">GitHub</a>
-                    <a href="#" className="text-lg text-white hover:text-white/70 transition-colors">Instagram</a>
+                    <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">LinkedIn</a>
+                    <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">GitHub</a>
+                    <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">Instagram</a>
                   </div>
                 </div>
               </div>

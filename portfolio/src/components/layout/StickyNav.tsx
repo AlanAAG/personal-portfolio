@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import ContactModal from '@/components/ui/ContactModal';
@@ -9,12 +10,13 @@ import ContactModal from '@/components/ui/ContactModal';
 export default function StickyNav() {
   const [time, setTime] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Asia/Dubai',
+        timeZone: 'Asia/Kolkata',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
@@ -36,15 +38,25 @@ export default function StickyNav() {
         transition={{ delay: 1, duration: 1 }}
       >
         {/* Left: Location & Time */}
-        <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest">
-          <span>Dubai, UAE</span>
+        <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest w-1/3">
+          <span className="hidden md:inline">New Delhi, IST</span>
           <span>{time}</span>
         </div>
 
+        {/* Center: ALAN AYALA Logo (Only on non-home pages) */}
+        <div className="w-1/3 flex justify-center items-center">
+          {pathname !== '/' && (
+            <Link href="/" className="flex items-center gap-1.5 md:gap-2 group mix-blend-difference pointer-events-auto leading-none pt-1">
+              <span className="font-sans font-bold text-lg md:text-xl tracking-tighter group-hover:opacity-70 transition-opacity leading-none">ALAN</span>
+              <span className="font-serif italic text-xl md:text-2xl font-normal text-white/90 group-hover:opacity-70 transition-opacity leading-none translate-y-[1px]">AYALA</span>
+            </Link>
+          )}
+        </div>
+
         {/* Right: Navigation */}
-        <div className="flex items-center gap-8 font-medium text-sm uppercase tracking-widest justify-end">
-          <Link href="/info" className="hover:opacity-50 transition-opacity">
-            Info
+        <div className="flex items-center gap-8 font-medium text-sm uppercase tracking-widest justify-end w-1/3">
+          <Link href="/info" className="hover:opacity-50 transition-opacity whitespace-nowrap">
+            About Me
           </Link>
           <button 
             onClick={() => setIsModalOpen(true)}

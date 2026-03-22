@@ -11,9 +11,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 right-0 p-8 z-40 mix-blend-difference flex gap-4">
+      <header className="fixed top-0 right-0 p-8 z-40 mix-blend-difference flex gap-4 items-center">
         <Link href="/info" className="text-white uppercase tracking-widest text-sm font-medium hover:underline">
-          Info
+          About Me
         </Link>
         <MagneticButton>
           <button 
