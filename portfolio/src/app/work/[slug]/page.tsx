@@ -8,15 +8,19 @@ import { useState } from 'react';
 
 function PitchdeckEmbed({ src, title }: { src: string; title: string }) {
   const [active, setActive] = useState(false);
+  // Google Docs Viewer bypasses Cloudinary's Content-Disposition: attachment header
+  // which would otherwise prevent the browser from rendering the PDF in an iframe.
+  const viewerSrc = `https://docs.google.com/viewer?url=${encodeURIComponent(src)}&embedded=true`;
   return (
     <div
       className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
       onMouseLeave={() => setActive(false)}
     >
       <iframe
-        src={`${src}#view=FitH&toolbar=0`}
+        src={viewerSrc}
         className="absolute inset-0 w-full h-full rounded-3xl bg-white/5"
         title={title}
+        allow="autoplay"
       />
       {!active && (
         <div
