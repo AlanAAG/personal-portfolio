@@ -22,7 +22,7 @@ const projectsData: Record<string, any> = {
       { label: "Website", url: "https://tiora.co/" },
       { label: "Instagram", url: "https://www.instagram.com/tiora.official/" }
     ],
-    pitchdeck: "/tiora-pitchdeck.pdf"
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/raw/upload/tiora-pitchdeck.pdf`
   },
   "professor-ai": {
     title: "Professor AI",
@@ -42,7 +42,7 @@ const projectsData: Record<string, any> = {
       { label: "GitHub", url: "https://github.com/AlanAAG/professor-agent-platform" }
     ],
     images: ["gitex"],
-    pitchdeck: "/professor-ai-pitchdeck.pdf"
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/raw/upload/professor-ai-pitchdeck.pdf`
   },
   "beyond-common": {
     title: "Beyond Common",
@@ -59,7 +59,7 @@ const projectsData: Record<string, any> = {
       { label: "Instagram", url: "https://www.instagram.com/beyondcommonstore/" }
     ],
     images: ["bc_1?v=2"],
-    pitchdeck: "/beyond-common-pitchdeck.pdf"
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/raw/upload/beyond-common-pitchdeck.pdf`
   },
   "wardrobe-assistant": {
     title: "AI Wardrobe & Travel Assistant",
