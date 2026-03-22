@@ -8,30 +8,64 @@ import { useState } from 'react';
 
 function PitchdeckEmbed({ src, title }: { src: string; title: string }) {
   const [active, setActive] = useState(false);
-  // Google Docs Viewer bypasses Cloudinary's Content-Disposition: attachment header
-  // which would otherwise prevent the browser from rendering the PDF in an iframe.
+  
+  // Attempt to use Google Docs viewer for better cross-browser compatibility
   const viewerSrc = `https://docs.google.com/viewer?url=${encodeURIComponent(src)}&embedded=true`;
+
   return (
-    <div
-      className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
-      onMouseLeave={() => setActive(false)}
-    >
-      <iframe
-        src={viewerSrc}
-        className="absolute inset-0 w-full h-full rounded-3xl bg-white/5"
-        title={title}
-        allow="autoplay"
-      />
-      {!active && (
-        <div
-          className="absolute inset-0 z-10 cursor-pointer flex items-center justify-center"
-          onClick={() => setActive(true)}
-        >
-          <span className="bg-black/60 backdrop-blur-sm text-white/70 text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Click to interact
-          </span>
+    <div className="mt-24 w-full">
+      <div className="flex flex-col md:flex-row justify-between md:items-end mb-8 border-b border-white/10 pb-4 gap-4">
+        <div>
+          <h3 className="text-sm font-mono uppercase tracking-widest text-white/50">Investor Pitchdeck</h3>
+          <p className="text-[10px] font-mono text-white/30 mt-1 uppercase tracking-tighter">Click to unlock scroll & interact</p>
         </div>
-      )}
+        <div className="flex gap-6">
+          <a
+            href={src}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono uppercase tracking-widest text-[#6339FF] hover:text-white transition-colors flex items-center gap-2"
+          >
+            Direct Link ↗
+          </a>
+          <a
+            href={src}
+            download
+            className="text-xs font-mono uppercase tracking-widest text-white/70 hover:text-white transition-colors flex items-center gap-2"
+          >
+            Download ↓
+          </a>
+        </div>
+      </div>
+      
+      <div
+        className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
+        onMouseLeave={() => setActive(false)}
+      >
+        <iframe
+          src={viewerSrc}
+          className="absolute inset-0 w-full h-full rounded-3xl bg-white/5"
+          title={title}
+          allow="autoplay"
+        />
+        
+        {!active && (
+          <div
+            className="absolute inset-0 z-10 cursor-pointer flex flex-col items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-500"
+            onClick={() => setActive(true)}
+          >
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+              <span className="text-white text-xs font-mono uppercase tracking-[0.2em]">
+                Interact with Deck
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      <p className="mt-4 text-center text-[10px] font-mono text-white/20 uppercase tracking-[0.1em]">
+        Having trouble? Use the <span className="text-white/40">Direct Link</span> or <span className="text-white/40">Download</span> buttons above.
+      </p>
     </div>
   );
 }
@@ -227,15 +261,7 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
 
         {/* PITCHDECK EMBED */}
         {data.pitchdeck && (
-          <div className="mt-24 w-full">
-            <div className="flex flex-col md:flex-row justify-between md:items-end mb-8 border-b border-white/10 pb-4 gap-4">
-              <h3 className="text-sm font-mono uppercase tracking-widest text-white/50">Investor Pitchdeck</h3>
-              <a href={data.pitchdeck} target="_blank" rel="noopener noreferrer" className="text-xs font-mono uppercase tracking-widest text-white hover:text-white/50 transition-colors flex items-center gap-2">
-                Open Full Screen ↗
-              </a>
-            </div>
-            <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
-          </div>
+          <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
         )}
 
         {/* DYNAMIC IMAGE GALLERY */}
