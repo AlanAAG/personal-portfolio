@@ -1,7 +1,36 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import VideoPlayer from '@/components/ui/VideoPlayer';
+import { useState } from 'react';
+
+function PitchdeckEmbed({ src, title }: { src: string; title: string }) {
+  const [active, setActive] = useState(false);
+  return (
+    <div
+      className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
+      onMouseLeave={() => setActive(false)}
+    >
+      <iframe
+        src={`${src}#view=FitH&toolbar=0`}
+        className="absolute inset-0 w-full h-full rounded-3xl bg-white/5"
+        title={title}
+      />
+      {!active && (
+        <div
+          className="absolute inset-0 z-10 cursor-pointer flex items-center justify-center"
+          onClick={() => setActive(true)}
+        >
+          <span className="bg-black/60 backdrop-blur-sm text-white/70 text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Click to interact
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const projectsData: Record<string, any> = {
   "tiora": {
@@ -201,13 +230,7 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
                 Open Full Screen ↗
               </a>
             </div>
-            <div className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group">
-              <iframe 
-                src={`${data.pitchdeck}#view=FitH&toolbar=0`} 
-                className="absolute inset-0 w-full h-full rounded-3xl bg-white/5" 
-                title={`${data.title} Pitchdeck`}
-              />
-            </div>
+            <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
           </div>
         )}
 
