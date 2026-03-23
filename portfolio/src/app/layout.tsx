@@ -10,9 +10,7 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import StickyNav from "@/components/layout/StickyNav";
 import Footer from "@/components/layout/Footer";
 
-// Dynamically import heavy canvas components to unblock LCP
-const FluidBackground = dynamic(() => import("@/components/canvas/FluidBackground"), { ssr: false });
-const NoiseCanvas = dynamic(() => import("@/components/canvas/NoiseCanvas"), { ssr: false });
+import CanvasSystem from "@/components/layout/CanvasSystem";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -49,8 +47,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white antialiased selection:bg-white/20`}
       >
-        <FluidBackground />
-        <NoiseCanvas />
+        <CanvasSystem />
         <CustomCursor />
         <SocialLinks />
         <ScrollProgress />
