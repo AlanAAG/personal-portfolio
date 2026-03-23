@@ -28,9 +28,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alan Ayala — Creative Developer",
+  title: "Alan Ayala — AI-Driven Technical Founder",
   description:
-    "Full-stack engineer & creative developer building high-end digital experiences. Based globally.",
+    "AI-Driven Technical Founder engineering scalable solutions across continents. Based globally.",
+  icons: {
+    icon: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/favicon`,
+  },
 };
 
 export default function RootLayout({
