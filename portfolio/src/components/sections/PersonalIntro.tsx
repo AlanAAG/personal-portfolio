@@ -99,7 +99,7 @@ export default function PersonalIntro() {
         {/* THE TEXT (Right Column) */}
         <div className="z-20 flex-1 flex flex-col justify-center">
           
-          <div className="mb-10 flex flex-col font-sans font-bold tracking-tighter text-[11vw] md:text-[6.5vw] lg:text-[5vw] leading-[0.9] text-white">
+          <div className="mb-10 flex flex-col font-sans font-bold tracking-tighter text-[10vw] md:text-[6.5vw] lg:text-[5vw] leading-[0.9] text-white">
             <div className="block">
               <ScrollRevealText text="AI-DRIVEN" progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
             </div>

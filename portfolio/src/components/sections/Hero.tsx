@@ -168,16 +168,16 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center">
 
           {/* ALAN AYALA — non-wrapped containers, characters wrap themselves */}
-          <div className="flex flex-nowrap items-baseline justify-center w-full leading-[0.82] mb-2 gap-[2.5vw]">
+          <div className="flex flex-wrap items-baseline justify-center w-full leading-[0.82] mb-2 gap-[4vw] md:gap-[2.5vw]">
 
             <AnimatedWord
               text="ALAN"
-              className="text-[13.5vw] font-bold tracking-tight font-sans text-white"
+              className="text-[18vw] md:text-[13.5vw] font-bold tracking-tight font-sans text-white"
             />
 
             <AnimatedWord
               text="AYALA"
-              className="text-[13.5vw] font-serif italic tracking-tight text-white"
+              className="text-[18vw] md:text-[13.5vw] font-serif italic tracking-tight text-white"
             />
 
           </div>
@@ -187,13 +187,13 @@ export default function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex items-center gap-6 pt-6 pb-2 pointer-events-auto"
+            className="flex items-center gap-3 md:gap-6 pt-6 pb-2 pointer-events-auto"
           >
-            <span className="h-[1px] w-12 bg-white/30" />
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 font-inter text-center">
+            <span className="h-[1px] w-8 md:w-12 bg-white/30" />
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-white/50 font-inter text-center">
               AI-Driven Technical Founder
             </p>
-            <span className="h-[1px] w-12 bg-white/30" />
+            <span className="h-[1px] w-8 md:w-12 bg-white/30" />
           </motion.div>
 
         </div>

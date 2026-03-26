@@ -71,26 +71,26 @@ export default function HorizontalGallery() {
   return (
     <section ref={targetRef} className="relative h-[400vh] bg-black">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        <motion.div ref={scrollRef} style={{ x }} className="flex gap-16 md:gap-20 px-10 md:px-20 shrink-0 items-center w-max">
-          <div className="flex flex-col justify-center min-w-[40vw]">
-            <h2 className="text-[10vw] font-bold text-white font-sans leading-none mb-4 tracking-tighter">
+        <motion.div ref={scrollRef} style={{ x }} className="flex gap-8 md:gap-20 px-6 md:px-20 shrink-0 items-center w-max">
+          <div className="flex flex-col justify-center min-w-[70vw] md:min-w-[40vw]">
+            <h2 className="text-[12vw] md:text-[10vw] font-bold text-white font-sans leading-none mb-2 md:mb-4 tracking-tighter">
               SELECTED
             </h2>
-            <h2 className="text-[10vw] font-serif italic text-white/50 leading-none tracking-tight">
+            <h2 className="text-[12vw] md:text-[10vw] font-serif italic text-white/50 leading-none tracking-tight">
               WORKS
             </h2>
           </div>
           
           {projects.map((project, i) => (
-            <Link href={`/work/${project.slug}`} key={i} className="relative h-[60vh] w-[40vw] min-w-[400px] bg-neutral-900 rounded-3xl border border-white/10 overflow-hidden group block cursor-pointer shrink-0">
-              <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
+            <Link href={`/work/${project.slug}`} key={i} className="relative h-[60vh] w-[85vw] md:w-[40vw] min-w-[300px] md:min-w-[400px] bg-neutral-900 rounded-3xl border border-white/10 overflow-hidden group block cursor-pointer shrink-0">
+              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-between z-20">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-3xl font-bold text-white font-sans drop-shadow-md">{project.title}</h3>
-                  <span className="font-mono text-xs text-white/80 border border-white/40 bg-black/40 backdrop-blur-md px-2 py-1 rounded-full">{project.category}</span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-sans drop-shadow-md">{project.title}</h3>
+                  <span className="font-mono text-[10px] md:text-xs text-white/80 border border-white/40 bg-black/40 backdrop-blur-md px-2 py-1 rounded-full">{project.category}</span>
                 </div>
                 
                 <div>
-                  <p className="text-white/90 drop-shadow-md mb-6 text-lg font-sans font-medium">{project.description}</p>
+                  <p className="text-white/90 drop-shadow-md mb-4 md:mb-6 text-base md:text-lg font-sans font-medium">{project.description}</p>
                   <div className="flex gap-2 flex-wrap">
                     {project.stack.map((tech, j) => (
                       <span key={j} className="text-xs font-mono text-white/80 bg-black/40 backdrop-blur-md border border-white/10 px-2 py-1 rounded">
@@ -120,7 +120,7 @@ export default function HorizontalGallery() {
           ))}
           
           {/* High-fidelity architectural end-cap spacer (Phone Vertical Ratio) */}
-          <div className="relative h-[60vh] aspect-[9/16] min-w-[300px] rounded-3xl overflow-hidden group shrink-0">
+          <div className="relative h-[60vh] aspect-[9/16] min-w-[200px] md:min-w-[300px] rounded-3xl overflow-hidden group shrink-0">
             <Image 
               src="hero_no_bg" 
               alt="Closing horizontal gallery block graphic" 
@@ -131,14 +131,14 @@ export default function HorizontalGallery() {
           </div>
           
           {/* CV Call To Action - Minimalist glass effect */}
-          <div className="relative h-[60vh] w-[30vw] min-w-[350px] rounded-3xl bg-white/5 backdrop-blur-xl border border-white/20 flex flex-col justify-center items-center text-center p-12 group hover:bg-white/10 transition-colors duration-500 shrink-0">
-            <h3 className="text-3xl font-serif italic text-white/90 mb-8 leading-tight">
+          <div className="relative h-[60vh] w-[70vw] md:w-[30vw] min-w-[300px] md:min-w-[350px] rounded-3xl bg-white/5 backdrop-blur-xl border border-white/20 flex flex-col justify-center items-center text-center p-8 md:p-12 group hover:bg-white/10 transition-colors duration-500 shrink-0">
+            <h3 className="text-2xl md:text-3xl font-serif italic text-white/90 mb-6 md:mb-8 leading-tight">
               Looking for<br />the full details?
             </h3>
             <a 
               href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}               target="_blank" 
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-black font-semibold font-mono text-xs uppercase tracking-[0.2em] transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] rounded-full"
+              className="px-6 md:px-8 py-3 md:py-4 bg-white text-black font-semibold font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] rounded-full"
             >
               View Full CV
             </a>

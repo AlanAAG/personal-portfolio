@@ -15,7 +15,7 @@ export default function SocialLinks() {
   return (
     <motion.div 
       style={{ opacity: footerOpacity, y: footerY, pointerEvents }} 
-      className="fixed bottom-10 right-10 z-[60]"
+      className="fixed bottom-10 right-10 z-[60] hidden md:flex"
     >
       <motion.div 
         className="flex flex-col items-end gap-3 font-mono text-xs text-white/50 tracking-wider mix-blend-difference"
