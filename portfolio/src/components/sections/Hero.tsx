@@ -172,12 +172,12 @@ export default function Hero() {
 
             <AnimatedWord
               text="ALAN"
-              className="text-[18vw] md:text-[13.5vw] font-bold tracking-tight font-sans text-white"
+              className="text-[16vw] md:text-[13.5vw] font-bold tracking-tight font-sans text-white"
             />
 
             <AnimatedWord
               text="AYALA"
-              className="text-[18vw] md:text-[13.5vw] font-serif italic tracking-tight text-white"
+              className="text-[16vw] md:text-[13.5vw] font-serif italic tracking-tight text-white"
             />
 
           </div>

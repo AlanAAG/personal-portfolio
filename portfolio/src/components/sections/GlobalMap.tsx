@@ -114,9 +114,9 @@ export default function GlobalMap() {
   const pathLength = timelineProgress;
 
   return (
-    <section id="map" ref={container} className="h-[400vh] relative bg-black text-white">
-      {/* Sticky Viewport Container */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section id="map" ref={container} className="h-[400vh] md:h-[400vh] relative bg-black text-white">
+      {/* Sticky Viewport Container - Desktop Only */}
+      <div className="sticky top-0 h-screen w-full hidden md:flex flex-col items-center justify-center overflow-hidden">
         
         {/* SVG Map Path */}
         <div className="absolute inset-0 flex items-center justify-center opacity-80 pointer-events-none z-10 p-4 -translate-y-[4vh] md:-translate-y-[6vh]">
@@ -155,7 +155,7 @@ export default function GlobalMap() {
           </svg>
         </div>
 
-        {/* Cinematic Title Behind the Graphic */}
+        {/* Cinematic Title Behind the Graphic (Desktop) */}
         <div className="z-0 text-center mix-blend-difference pointer-events-none opacity-20">
           <motion.h2 style={{ y: yTitle }} className="text-[12vw] font-bold font-sans leading-none tracking-tighter">
             GLOBAL
@@ -165,6 +165,46 @@ export default function GlobalMap() {
           </motion.h2>
         </div>
       </div>
+
+      {/* MOBILE VIEW - Location Cards Feed (SOTA) */}
+      <div className="md:hidden relative z-20 flex flex-col items-center py-24 px-6 gap-6">
+        <div className="text-center mb-12 mix-blend-difference pointer-events-none opacity-40">
+           <h2 className="text-[14vw] font-bold font-sans tracking-tighter uppercase leading-none">GLOBAL</h2>
+           <h2 className="text-[14vw] font-serif italic text-white/70 uppercase leading-none">NODES</h2>
+        </div>
+        
+        <div className="w-full flex flex-col gap-6">
+          {nodes.map((node, i) => (
+            <Link href={`/experience/${node.id}`} key={i} className="block group">
+              <div className={`p-8 rounded-[2rem] border backdrop-blur-xl transition-all duration-500 shadow-xl ${
+                node.status === 'completed' ? 'bg-[#6339FF]/5 border-[#6339FF]/30 shadow-[0_0_30px_rgba(99,57,255,0.1)]' :
+                node.status === 'in-progress' ? 'bg-white/5 border-white/20' :
+                'bg-black/40 border-white/5 opacity-50'
+              }`}>
+                <div className="flex justify-between items-start mb-8">
+                   <div className="flex flex-col gap-2">
+                     <span className={`text-[9px] px-3 py-1 rounded-full font-bold tracking-[0.2em] uppercase w-max ${
+                       node.status === 'completed' ? 'bg-[#6339FF]/20 text-[#6339FF]' :
+                       node.status === 'in-progress' ? 'bg-white text-black' :
+                       'bg-white/10 text-white/50'
+                     }`}>
+                       {node.status === 'in-progress' ? 'Current' : node.status}
+                     </span>
+                     <h3 className="text-3xl font-bold text-white uppercase tracking-tighter mt-2">{node.name}</h3>
+                   </div>
+                   <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#6339FF] group-hover:border-[#6339FF] transition-all duration-500">
+                     <span className="text-white text-xl transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                   </div>
+                </div>
+                <p className="text-[10px] text-white/40 font-mono uppercase tracking-[0.25em] leading-relaxed border-t border-white/5 pt-6">
+                  {node.detail.replace(/[()]/g, '')}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
     </section>
   );
 }

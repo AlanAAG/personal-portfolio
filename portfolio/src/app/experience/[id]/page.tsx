@@ -103,21 +103,21 @@ export default async function ExperiencePage(props: { params: Promise<{ id: stri
     <main className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden pb-32">
       <div className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-[#6339FF]/10 blur-[150px] pointer-events-none rounded-full mix-blend-screen" />
       
-      <div className="relative z-10 flex-1 w-full max-w-screen-xl mx-auto px-6 py-20 md:px-12 md:py-32">
-        <Link href="/#map" className="inline-flex items-center text-white/50 hover:text-white transition-colors mb-20 group">
+      <div className="relative z-10 flex-1 w-full max-w-screen-xl mx-auto px-6 py-12 md:px-12 md:py-32">
+        <Link href="/#map" className="inline-flex items-center text-white/50 hover:text-white transition-colors mb-12 md:mb-20 group">
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
           <span className="font-mono text-xs uppercase tracking-widest">Back to Globe</span>
         </Link>
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
           <div>
-            <span className="text-xs md:text-sm font-mono tracking-widest text-[#6339FF] uppercase mb-4 flex items-center">
-              <MapPin className="w-4 h-4 mr-2" /> Global Node
+            <span className="text-[10px] md:text-sm font-mono tracking-widest text-[#6339FF] uppercase mb-2 md:mb-4 flex items-center">
+              <MapPin className="w-3 h-3 md:w-4 md:h-4 mr-2" /> Global Node
             </span>
-            <h1 className="text-5xl md:text-8xl font-sans font-bold tracking-tighter capitalize mt-2">
+            <h1 className="text-4xl md:text-8xl font-sans font-bold tracking-tighter capitalize mt-2">
               {data.title}
             </h1>
-            <p className="text-xl md:text-3xl font-serif text-white/70 italic mt-4">
+            <p className="text-lg md:text-3xl font-serif text-white/70 italic mt-3 md:mt-4">
               {data.subtitle}
             </p>
           </div>
@@ -125,7 +125,7 @@ export default async function ExperiencePage(props: { params: Promise<{ id: stri
         
         <div className="h-[1px] w-full bg-white/10 mb-16" />
         
-        <p className="text-2xl md:text-4xl text-white font-sans font-light tracking-tight max-w-4xl leading-relaxed mb-20">
+        <p className="text-xl md:text-4xl text-white font-sans font-light tracking-tight max-w-4xl leading-relaxed mb-16 md:mb-20 px-1">
           {data.summary}
         </p>
 
@@ -138,16 +138,19 @@ export default async function ExperiencePage(props: { params: Promise<{ id: stri
                 <h3 className="text-xs font-mono uppercase tracking-widest text-white/50 border-b border-white/10 pb-4">Key Operations</h3>
                 {data.roles.map((role: any, i: number) => {
                   const content = (
-                    <div className="bg-white/5 border border-white/10 rounded-xl p-6 lg:p-8 hover:bg-white/10 transition-colors group">
-                      <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-4 gap-2">
-                        <h4 className={`text-xl lg:text-2xl font-bold ${role.link ? 'group-hover:text-[#6339FF] transition-colors flex items-center gap-2' : ''}`}>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10 hover:bg-white/10 transition-colors group relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-[#6339FF] opacity-50" />
+                      <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-6 gap-3">
+                        <h4 className={`text-2xl md:text-3xl font-bold ${role.link ? 'group-hover:text-[#6339FF] transition-colors flex items-center gap-2' : ''}`}>
                           {role.company}
                           {role.link && <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[#6339FF] translate-y-[1px]">↗</span>}
                         </h4>
-                        <span className="text-xs xl:text-sm font-mono text-white/50 tracking-wider bg-black/50 px-3 py-1 rounded inline-block w-max">{role.timeline}</span>
+                        <span className="text-[10px] md:text-xs font-mono text-white/40 tracking-[0.2em] bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-block w-max uppercase whitespace-nowrap">{role.timeline}</span>
                       </div>
-                      <h5 className="text-base lg:text-lg text-[#6339FF] font-semibold mb-4">{role.title}</h5>
-                      <p className="text-white/70 leading-relaxed text-base lg:text-lg font-light">{role.description}</p>
+                      <h5 className="text-lg md:text-xl text-[#6339FF] font-semibold mb-6 tracking-tight">{role.title}</h5>
+                      <p className="text-white/80 leading-relaxed text-base md:text-lg font-light md:font-normal">
+                        {role.description}
+                      </p>
                     </div>
                   );
 
@@ -170,19 +173,20 @@ export default async function ExperiencePage(props: { params: Promise<{ id: stri
           )}
           </div>
 
-          {/* RIGHT COLUMN: VERTICAL MEDIA STACK */}
+          {/* RIGHT COLUMN: MEDIA GRID */}
           {data.images && data.images.length > 0 && (
-            <div className="w-full lg:w-1/2 flex flex-col gap-8 lg:mt-12">
+            <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4 md:gap-8 lg:flex lg:flex-col lg:mt-12">
               {data.images.map((img: string, i: number) => (
                 <div 
                   key={i} 
-                  className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                  className={`relative w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 ${i % 3 === 0 ? 'col-span-2' : 'col-span-1'} lg:col-span-1 transform transition-transform duration-700 hover:scale-[1.02]`}
                 >
                   <Image
                     src={img}
                     alt={`${data.title} graphical asset ${i + 1}`}
                     fill
                     className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               ))}

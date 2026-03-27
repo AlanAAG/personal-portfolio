@@ -142,7 +142,7 @@ const timelineData = [
 ];
 
 const TimelineNode = ({ data, index }: { data: any; index: number }) => {
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: nodeRef,
     offset: ["start 90%", "center center"]
@@ -157,33 +157,58 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
   return (
     <div ref={nodeRef} className={`relative flex items-center justify-between w-full my-12 lg:my-24 z-10 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
       
-      {/* Central Connector System */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-20">
+      {/* Central Connector System - Desktop Only */}
+      <div className="absolute left-1/2 -translate-x-1/2 items-center justify-center z-20 hidden lg:flex">
         
-        {/* The Giant Encapsulating Dot - mathematically bounds the line's wiggly amplitude */}
+        {/* The Giant Encapsulating Dot */}
         <motion.div 
           style={{ scale, opacity }}
-          className="relative w-10 h-10 md:w-14 md:h-14 rounded-full bg-black border-[3px] border-[#6339FF]/80 flex items-center justify-center shadow-[0_0_20px_rgba(99,57,255,0.6)] backdrop-blur-md"
+          className="relative w-14 h-14 rounded-full bg-black border-[3px] border-[#6339FF]/80 flex items-center justify-center shadow-[0_0_20px_rgba(99,57,255,0.6)] backdrop-blur-md"
         >
-          <div className="absolute inset-0 m-auto w-3 h-3 md:w-4 md:h-4 bg-white rounded-full animate-pulse opacity-90 shadow-[0_0_10px_rgba(255,255,255,1)]"></div>
+          <div className="absolute inset-0 m-auto w-4 h-4 bg-white rounded-full animate-pulse opacity-90 shadow-[0_0_10px_rgba(255,255,255,1)]"></div>
         </motion.div>
 
-        {/* Horizontal Laser Connectors to the text blocks */}
+        {/* Horizontal Laser Connectors */}
         <motion.div
            style={{ opacity }}
-           className={`hidden lg:block absolute top-1/2 -translate-y-1/2 h-[1px] ${isEven ? 'right-[110%] w-16 xl:w-24 bg-gradient-to-l from-[#6339FF] to-transparent' : 'left-[110%] w-16 xl:w-24 bg-gradient-to-r from-[#6339FF] to-transparent'}`}
+           className={`absolute top-1/2 -translate-y-1/2 h-[1px] ${isEven ? 'right-[110%] w-16 xl:w-24 bg-gradient-to-l from-[#6339FF] to-transparent' : 'left-[110%] w-16 xl:w-24 bg-gradient-to-r from-[#6339FF] to-transparent'}`}
         />
       </div>
 
       {/* Content Box */}
       <motion.div 
         style={{ y, opacity }}
-        className={`w-full lg:w-[42%] p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl ${isEven ? 'lg:text-right' : 'lg:text-left'} pl-16 lg:pl-8 mt-8 lg:mt-0 relative group ${data.link ? 'hover:bg-white/10 hover:border-[#6339FF]/50 transition-all duration-300' : ''}`}
+        className={`w-full lg:w-[42%] p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 lg:border-white/10 rounded-3xl ${isEven ? 'lg:text-right' : 'lg:text-left'} mt-8 lg:mt-0 relative group ${data.link ? 'hover:bg-white/10 hover:border-[#6339FF]/50 transition-all duration-300' : ''}`}
       >
+        {/* Mobile Left Border indicator */}
+        <div className="lg:hidden absolute top-0 left-0 w-1 h-full bg-[#6339FF]/30 rounded-l-3xl" />
         {data.link && (
           <Link href={data.link} className="absolute inset-0 z-20 rounded-2xl" aria-label={`View ${data.title} Case Study`} />
         )}
-        <span className="inline-block px-3 py-1 mb-4 text-[0.65rem] md:text-xs font-mono tracking-widest uppercase border border-[#6339FF]/50 text-[#6339FF] rounded-full bg-[#6339FF]/10">
+
+        {/* Mobile Media Integration */}
+        <div className="lg:hidden w-full mb-6 rounded-xl overflow-hidden aspect-video border border-white/10 relative">
+          {data.mediaType === 'video' ? (
+            <video
+              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image
+              src={data.mediaId || `experience_${index + 1}`}
+              alt={data.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+          )}
+        </div>
+
+        <span className="inline-block px-3 py-1 mb-4 text-[10px] md:text-xs font-mono tracking-widest uppercase border border-[#6339FF]/50 text-[#6339FF] rounded-full bg-[#6339FF]/10">
           {data.category}
         </span>
         <h3 className="text-xl md:text-2xl font-bold mb-2">{data.title}</h3>
@@ -191,7 +216,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
           {data.entity}
           {data.link && <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[#6339FF] font-sans not-italic translate-y-[1px]">↗</span>}
         </h4>
-        <div className={`flex flex-col gap-1 font-mono text-[0.65rem] md:text-xs text-white/40 uppercase tracking-widest mb-4 ${isEven ? 'lg:items-end' : 'lg:items-start'}`}>
+        <div className={`flex flex-col gap-1 font-mono text-[10px] md:text-xs text-white/40 uppercase tracking-widest mb-4 ${isEven ? 'lg:items-end' : 'lg:items-start'}`}>
           <span>{data.location}</span>
           <span className="text-white/60 font-semibold">{data.year}</span>
         </div>
@@ -291,12 +316,12 @@ export default function About() {
   return (
     <section className="min-h-screen flex flex-col justify-center px-4 md:px-12 lg:px-20 py-32 bg-black text-white relative z-10 w-full overflow-hidden">
       <div className="max-w-[1400px] w-full mx-auto relative">
-        <div className="mb-32 max-w-4xl text-center mx-auto flex flex-col items-center">
-          <h2 className="text-sm font-mono text-[#6339FF] mb-8 uppercase tracking-widest">Who I Am</h2>
-          <p className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-white/90 font-sans tracking-tight mb-8">
+        <div className="mb-20 md:mb-32 max-w-4xl text-center mx-auto flex flex-col items-center">
+          <h2 className="text-[10px] md:text-xs font-mono text-[#6339FF] mb-6 md:mb-8 uppercase tracking-widest">Who I Am</h2>
+          <p className="text-2xl md:text-5xl lg:text-6xl font-light leading-tight text-white/90 font-sans tracking-tight mb-8">
             I am a 20-year-old entrepreneur and <span className="font-bold">Global Builder</span> engineering scalable solutions across continents.
           </p>
-          <p className="text-lg md:text-2xl font-light leading-relaxed text-white/50 font-sans max-w-3xl">
+          <p className="text-base md:text-2xl font-light leading-relaxed text-white/50 font-sans max-w-3xl">
             I thrive on immersing myself in new cultures and chasing impossible challenges. Whether I am architecting deep AI systems or launching D2C brands, I am constantly learning, building, and growing today—so that tomorrow, I can make a definitive impact.
           </p>
         </div>
@@ -308,10 +333,10 @@ export default function About() {
           <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-40 z-0 opacity-50 lg:opacity-100 pointer-events-none hidden md:block">
             {lineHeight > 0 && (
               <>
-                <svg viewBox={`0 0 100 ${lineHeight}`} preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-full stroke-white/10 stroke-[2px] fill-none">
+                <svg viewBox={`0 0 100 ${lineHeight}`} preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-full stroke-white/5 stroke-[2px] fill-none">
                   <path d={generateWavyPath(lineHeight)} />
                 </svg>
-                <svg viewBox={`0 0 100 ${lineHeight}`} preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-full stroke-[#6339FF] stroke-[4px] fill-none drop-shadow-[0_0_15px_rgba(99,57,255,0.8)]">
+                <svg viewBox={`0 0 100 ${lineHeight}`} preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-full stroke-[#6339FF]/40 stroke-[4px] fill-none drop-shadow-[0_0_15px_rgba(99,57,255,0.4)]">
                   <motion.path 
                     d={generateWavyPath(lineHeight)} 
                     style={{ pathLength: scrollYProgress }} 
@@ -322,9 +347,9 @@ export default function About() {
           </div>
           
           {/* Mobile Straight Line fallback */}
-          <div className="absolute left-6 md:hidden top-0 bottom-0 w-[2px] bg-white/10 z-0">
+          <div className="absolute left-0 md:hidden top-0 bottom-0 w-[1px] bg-white/10 z-0 hidden">
              <motion.div 
-               className="w-full bg-[#6339FF] origin-top drop-shadow-[0_0_10px_rgba(99,57,255,1)]"
+               className="w-full bg-[#6339FF] origin-top opacity-50"
                style={{ scaleY: scrollYProgress, height: '100%' }}
              />
           </div>

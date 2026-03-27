@@ -32,8 +32,16 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Social Links for Mobile (SOTA Cleanliness) */}
+          <div className="flex flex-wrap justify-center md:hidden gap-x-8 gap-y-4 mb-4 border-y border-white/5 py-6 w-full">
+            <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-[0.2em]">Instagram</a>
+            <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-[0.2em]">LinkedIn</a>
+            <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-[0.2em]">GitHub</a>
+            <a href="mailto:alanayalag@gmail.com" className="text-white/70 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-[0.2em]">Email</a>
+          </div>
+
           {/* Centered Copyright Below */}
-          <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase text-center mt-4">
+          <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase text-center">
             © {year} Alan Ayala. All rights reserved.
           </span>
 

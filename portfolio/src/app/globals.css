@@ -47,4 +47,36 @@
     display: inline-flex;
     will-change: transform;
   }
+
+  /* SOTA Mobile Utilities */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Universal touch target improvement for small screens (SOTA UX) */
+  @media (max-width: 768px) {
+    button, a, .clickable {
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Prevent content from being cramped at the edges */
+    .section-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* Smoother font scaling for mobile */
+    .text-title-mobile {
+      font-size: clamp(3rem, 15vw, 6rem);
+      line-height: 0.9;
+    }
+  }
 }

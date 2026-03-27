@@ -141,8 +141,8 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col font-sans pb-32">
-      <div className="flex-1 w-full max-w-screen-xl mx-auto px-6 py-20 md:px-12 md:py-32">
-        <Link href="/#work" className="inline-flex items-center text-white/50 hover:text-white transition-colors mb-20 group">
+      <div className="flex-1 w-full max-w-screen-xl mx-auto px-6 py-12 md:px-12 md:py-32">
+        <Link href="/#work" className="inline-flex items-center text-white/50 hover:text-white transition-colors mb-12 md:mb-20 group">
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
           <span className="font-mono text-xs uppercase tracking-widest">Back to Portfolio</span>
         </Link>
@@ -152,13 +152,13 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
           <div className="flex flex-col xl:flex-row gap-12 xl:gap-20 mb-16 xl:items-center">
             
             <div className="xl:w-1/2 flex flex-col justify-center">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-bold tracking-tighter capitalize mb-4">
+              <h1 className="text-4xl md:text-7xl lg:text-8xl font-sans font-bold tracking-tighter capitalize mb-4">
                 {data.title}
               </h1>
-              <p className="text-2xl md:text-3xl font-serif text-white/70 italic mb-8">
+              <p className="text-xl md:text-3xl font-serif text-white/70 italic mb-6 md:mb-8">
                 {data.role}
               </p>
-              <div className="font-mono text-sm uppercase tracking-widest text-white/50 space-y-2 mb-8">
+              <div className="font-mono text-[10px] md:text-sm uppercase tracking-widest text-white/50 space-y-1 md:space-y-2 mb-8">
                 <p>{data.location}</p>
                 <p>{data.timeline}</p>
               </div>
@@ -183,14 +183,14 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
         ) : (
           <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 mb-16">
             <div>
-              <h1 className="text-5xl md:text-8xl font-sans font-bold tracking-tighter capitalize mb-4">
+              <h1 className="text-4xl md:text-8xl font-sans font-bold tracking-tighter capitalize mb-4">
                 {data.title}
               </h1>
-              <p className="text-2xl md:text-3xl font-serif text-white/70 italic">
+              <p className="text-xl md:text-3xl font-serif text-white/70 italic">
                 {data.role}
               </p>
             </div>
-            <div className="text-left xl:text-right font-mono text-sm uppercase tracking-widest text-white/50 space-y-2">
+            <div className="text-left xl:text-right font-mono text-[10px] md:text-sm uppercase tracking-widest text-white/50 space-y-1 md:space-y-2">
               <p>{data.location}</p>
               <p>{data.timeline}</p>
 
@@ -223,14 +223,14 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
           </div>
 
           <div className="lg:col-span-2">
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-8">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-8 leading-tight">
               {data.summary}
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {data.bullets.map((bullet: string, i: number) => (
-                <div key={i} className="flex gap-4">
-                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#6339FF] shrink-0" />
-                  <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
+                <div key={i} className="flex gap-6">
+                  <div className="mt-3 w-2 h-2 rounded-full bg-[#6339FF] shrink-0 shadow-[0_0_10px_rgba(99,57,255,0.5)]" />
+                  <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light md:font-normal">
                     {bullet}
                   </p>
                 </div>
@@ -246,17 +246,17 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
 
         {/* DYNAMIC IMAGE GALLERY */}
         {data.images && data.images.length > 0 && (
-          <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="mt-24 md:mt-32 w-full grid grid-cols-2 gap-4 md:gap-10">
             {data.images.map((img: string, i: number) => (
               <div 
                 key={i} 
-                className={`relative w-full h-[50vh] md:h-[70vh] rounded-3xl overflow-hidden group ${data.images.length % 2 !== 0 && i === data.images.length - 1 ? 'md:col-span-2 md:h-[80vh]' : ''}`}
+                className={`relative w-full h-[45vh] md:h-[75vh] rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/10 ${i % 3 === 0 ? 'col-span-2' : 'col-span-1'} lg:col-span-1 transform transition-transform duration-700 hover:scale-[1.01]`}
               >
                 <Image
                   src={img}
                   alt={`${data.title} graphical asset ${i + 1}`}
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={i === 0}
                 />

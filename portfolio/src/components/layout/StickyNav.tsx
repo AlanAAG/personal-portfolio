@@ -47,8 +47,8 @@ export default function StickyNav() {
         <div className="w-2/4 md:w-1/3 flex justify-center items-center">
           {pathname !== '/' && (
             <Link href="/" className="flex items-center gap-1 md:gap-2 group mix-blend-difference pointer-events-auto leading-none pt-1">
-              <span className="font-sans font-bold text-base md:text-xl tracking-tighter group-hover:opacity-70 transition-opacity leading-none">ALAN</span>
-              <span className="font-serif italic text-lg md:text-2xl font-normal text-white/90 group-hover:opacity-70 transition-opacity leading-none translate-y-[1px]">AYALA</span>
+              <span className="font-sans font-bold text-lg md:text-xl tracking-tighter group-hover:opacity-70 transition-opacity leading-none uppercase">ALAN</span>
+              <span className="font-serif italic text-xl md:text-2xl font-normal text-white/90 group-hover:opacity-70 transition-opacity leading-none translate-y-[1px] uppercase">AYALA</span>
             </Link>
           )}
         </div>
