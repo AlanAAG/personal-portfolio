@@ -134,7 +134,7 @@ export default function Hero() {
   }, []);
 
   // Transform scale and Y position based on global scroll
-  const yOffset = useTransform(scrollY, [0, 800], ["0vh", isMobile ? "-79vh" : "-88vh"]);
+  const yOffset = useTransform(scrollY, [0, 800], ["0svh", isMobile ? "-79svh" : "-88svh"]);
   const scale = useTransform(scrollY, [0, 800], [1, isMobile ? 0.3 : 0.15]);
 
   return (
@@ -172,7 +172,7 @@ export default function Hero() {
       {/* FIXED Name block - Stays present and moves/shrinks on scroll */}
       <motion.div 
         style={{ y: yOffset, scale, transformOrigin: 'bottom center' }}
-        className="fixed bottom-24 md:bottom-8 left-0 right-0 z-[100] flex flex-col items-center justify-end pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 right-0 h-[100svh] pb-24 md:pb-8 z-[100] flex flex-col items-center justify-end pointer-events-none mix-blend-difference"
       >
         <div 
           className="w-full flex flex-col items-center pointer-events-auto cursor-pointer"
