@@ -121,12 +121,12 @@ export default function HorizontalGallery() {
           ))}
 
           {/* New Image Node (Desktop) */}
-          <div className="relative h-[60vh] w-[30vw] min-w-[350px] rounded-3xl bg-neutral-900 border border-white/10 overflow-hidden shrink-0 group">
+          <div className="relative h-[60vh] w-[25vw] min-w-[300px] flex items-end justify-center shrink-0">
              <Image 
                src="hero_no_bg"
                alt="Alan Ayala Profile"
                fill
-               className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+               className="object-contain object-bottom pointer-events-none"
                sizes="30vw"
              />
           </div>
@@ -187,44 +187,29 @@ export default function HorizontalGallery() {
             ))}
 
             {/* Mobile CV CTA removed from here, placed below */}
-
-            
-            {/* Final spacer for padding */}
           </div>
 
-          {/* New Mobile Image Node Below Cards */}
-          <div className="px-6 pb-6 w-full flex justify-center">
-            <div className="relative w-full max-w-sm aspect-[4/5] rounded-[2.5rem] bg-neutral-900 overflow-hidden shadow-xl border border-white/10 shrink-0 border-t-0">
-               <Image 
-                 src="hero_no_bg"
-                 alt="Alan Ayala Profile"
-                 fill
-                 className="object-cover object-top"
-                 sizes="90vw"
-               />
-            </div>
-          </div>
-
-          {/* New Mobile CV Block Below Cards */}
-          <div className="px-6 pb-20 w-full flex justify-center">
-            <div className="w-full max-w-sm rounded-[2rem] bg-white/5 border border-white/10 p-6 flex flex-row items-center gap-6 backdrop-blur-lg shadow-xl shrink-0">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border border-white/20 bg-black">
+          {/* New Mobile Image & CV Combined Block Below Cards */}
+          <div className="px-6 pb-20 pt-4 w-full flex justify-center">
+            <div className="w-full max-w-sm flex flex-row items-end gap-6 shrink-0">
+              <div className="relative w-[45%] aspect-[3/4] shrink-0">
                 <Image 
-                  src="/images/profile.png" 
+                  src="hero_no_bg" 
                   alt="Alan Ayala"
                   fill
-                  className="object-cover scale-110"
+                  className="object-contain object-bottom drop-shadow-2xl"
+                  sizes="50vw"
                 />
               </div>
-              <div className="flex flex-col gap-3 justify-center items-start">
-                <h3 className="text-xl font-serif italic text-white/90 leading-tight">
+              <div className="flex flex-col gap-4 justify-center items-start pb-6 w-[55%]">
+                <h3 className="text-2xl font-serif italic text-white/90 leading-tight">
                   View full details
                 </h3>
                 <a 
                   href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-white text-black font-bold font-mono text-[10px] uppercase tracking-widest rounded-full shadow-lg shrink-0 text-center hover:scale-105 transition-transform"
+                  className="px-6 py-3 bg-white text-black font-bold font-mono text-[10px] uppercase tracking-widest rounded-full shadow-lg shrink-0 text-center hover:scale-105 transition-transform"
                 >
                   Download CV
                 </a>

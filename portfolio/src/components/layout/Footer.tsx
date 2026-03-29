@@ -26,7 +26,7 @@ export default function Footer() {
             <div className="flex md:hidden flex-row justify-between items-center w-full">
               <div className="flex items-center gap-4">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/5 border border-white/10 shrink-0">
-                  <Image src="/images/profile.png" alt="Alan Ayala" fill className="object-cover" sizes="40px" />
+                  <Image src="hero_no_bg" alt="Alan Ayala" fill className="object-cover object-top" sizes="40px" />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-lg font-bold font-sans tracking-tight leading-none">ALAN AYALA</span>

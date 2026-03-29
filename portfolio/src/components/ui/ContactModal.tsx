@@ -80,19 +80,19 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 20 }}
             transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-            className="relative w-[95vw] h-[90vh] bg-neutral-900 border border-white/10 rounded-3xl p-6 md:p-20 overflow-y-auto shadow-2xl"
+            className="relative w-[95vw] h-[90dvh] bg-neutral-900 border border-white/10 rounded-3xl p-6 md:p-20 overflow-y-auto shadow-2xl"
             onMouseDown={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
-              className="absolute top-8 right-8 p-2 hover:bg-white/10 rounded-full transition-colors z-10"
+              className="absolute top-6 right-6 p-2 hover:bg-white/10 rounded-full transition-colors z-[60]"
               aria-label="Close modal"
             >
               <X className="w-6 h-6 text-white" />
             </button>
 
-            <div className="h-full flex flex-col md:flex-row gap-10 md:gap-20">
-              <div className="flex-1 flex flex-col justify-between">
+            <div className="min-h-full flex flex-col md:flex-row gap-10 md:gap-20 pb-12 md:pb-0">
+              <div className="flex-1 flex flex-col justify-between pt-6 md:pt-0">
                 {status === 'success' ? (
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -162,12 +162,36 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                           <p className="mt-2 md:mt-4 text-[10px] md:text-xs font-mono text-red-500 uppercase tracking-widest">Something went wrong. Please try again.</p>
                         )}
                       </div>
+                      
+                      {/* MOBILE ONLY: Contact & Socials integrated into form flow */}
+                      <div className="md:hidden mt-8 pt-6 border-t border-white/10 flex flex-col gap-8 pb-10">
+                        <div>
+                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">Contact Details</h3>
+                          <div className="space-y-2">
+                            <a href="mailto:alanayalag@gmail.com" className="block text-sm text-white hover:text-white/70 transition-colors">
+                              alanayalag@gmail.com
+                            </a>
+                            <p className="text-sm text-white">+52 5519361230</p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">Socials</h3>
+                          <div className="flex flex-row flex-wrap gap-6">
+                            <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">LinkedIn</a>
+                            <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">GitHub</a>
+                            <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">Instagram</a>
+                          </div>
+                        </div>
+                      </div>
+
                     </form>
                   </div>
                 )}
               </div>
 
-              <div className="md:w-1/3 flex flex-col justify-end gap-10">
+              {/* DESKTOP ONLY: Side Column Contact Info */}
+              <div className="hidden md:flex md:w-1/3 flex-col justify-end gap-10">
                 <div>
                   <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">Contact Details</h3>
                   <div className="space-y-4">
