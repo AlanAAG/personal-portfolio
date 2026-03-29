@@ -21,7 +21,7 @@ function PitchdeckEmbed({ src, title }: { src: string; title: string }) {
       </div>
       
       <div
-        className="w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
+        className="w-full aspect-video md:aspect-auto md:h-[80vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 relative group"
         onMouseLeave={() => setActive(false)}
       >
         <iframe

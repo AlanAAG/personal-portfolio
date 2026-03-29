@@ -134,7 +134,7 @@ export default function Hero() {
   }, []);
 
   // Transform scale and Y position based on global scroll
-  const yOffset = useTransform(scrollY, [0, 800], ["0vh", isMobile ? "-76vh" : "-85vh"]);
+  const yOffset = useTransform(scrollY, [0, 800], ["0vh", isMobile ? "-79vh" : "-88vh"]);
   const scale = useTransform(scrollY, [0, 800], [1, isMobile ? 0.3 : 0.15]);
 
   return (
