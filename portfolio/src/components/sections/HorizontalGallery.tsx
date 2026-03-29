@@ -70,7 +70,7 @@ export default function HorizontalGallery() {
 
   return (
     <section ref={targetRef} className="relative md:h-[400vh] bg-black">
-      <div className="sticky top-0 h-[60vh] md:h-screen flex items-center overflow-hidden">
+      <div className="md:sticky top-0 min-h-screen md:h-screen flex flex-col md:flex-row md:items-center overflow-hidden md:overflow-hidden">
         
         {/* DESKTOP VIEW - Scroll Driven */}
         <motion.div 
@@ -120,6 +120,17 @@ export default function HorizontalGallery() {
             </Link>
           ))}
 
+          {/* New Image Node (Desktop) */}
+          <div className="relative h-[60vh] w-[30vw] min-w-[350px] rounded-3xl bg-neutral-900 border border-white/10 overflow-hidden shrink-0 group">
+             <Image 
+               src="hero_no_bg"
+               alt="Alan Ayala Profile"
+               fill
+               className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+               sizes="30vw"
+             />
+          </div>
+
           {/* CV Call To Action */}
           <div className="relative h-[60vh] w-[30vw] min-w-[350px] rounded-3xl bg-white/5 backdrop-blur-xl border border-white/20 flex flex-col justify-center items-center text-center p-12 group hover:bg-white/10 transition-colors duration-500 shrink-0">
             <h3 className="text-3xl font-serif italic text-white/90 mb-8 leading-tight">
@@ -138,7 +149,7 @@ export default function HorizontalGallery() {
         </motion.div>
 
         {/* MOBILE VIEW - Native Scroll Snap (SOTA UX) */}
-        <div className="md:hidden flex flex-col w-full h-[85vh] justify-center">
+        <div className="md:hidden flex flex-col w-full min-h-screen justify-center pt-24 pb-10">
           <div className="px-6 mb-8 text-left">
             <h2 className="text-[14vw] font-bold text-white font-sans leading-none tracking-tighter uppercase">SELECTED</h2>
             <h2 className="text-[14vw] font-serif italic text-white/50 leading-none tracking-tight uppercase">WORKS</h2>
@@ -175,23 +186,50 @@ export default function HorizontalGallery() {
               </Link>
             ))}
 
-            {/* Mobile CV CTA */}
-            <div className="relative h-[60vh] w-[82vw] shrink-0 snap-center rounded-[2.5rem] bg-white/5 border border-white/10 flex flex-col justify-center items-center text-center p-10 backdrop-blur-lg">
-              <h3 className="text-3xl font-serif italic text-white/90 mb-10 leading-tight">
-                Looking for<br />the full details?
-              </h3>
-              <a 
-                href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-10 py-5 bg-white text-black font-bold font-mono text-xs uppercase tracking-[0.2em] rounded-full shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
-              >
-                View Full CV
-              </a>
-            </div>
+            {/* Mobile CV CTA removed from here, placed below */}
+
             
             {/* Final spacer for padding */}
-            <div className="min-w-[5vw] shrink-0" />
+          </div>
+
+          {/* New Mobile Image Node Below Cards */}
+          <div className="px-6 pb-6 w-full flex justify-center">
+            <div className="relative w-full max-w-sm aspect-[4/5] rounded-[2.5rem] bg-neutral-900 overflow-hidden shadow-xl border border-white/10 shrink-0 border-t-0">
+               <Image 
+                 src="hero_no_bg"
+                 alt="Alan Ayala Profile"
+                 fill
+                 className="object-cover object-top"
+                 sizes="90vw"
+               />
+            </div>
+          </div>
+
+          {/* New Mobile CV Block Below Cards */}
+          <div className="px-6 pb-20 w-full flex justify-center">
+            <div className="w-full max-w-sm rounded-[2rem] bg-white/5 border border-white/10 p-6 flex flex-row items-center gap-6 backdrop-blur-lg shadow-xl shrink-0">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border border-white/20 bg-black">
+                <Image 
+                  src="/images/profile.png" 
+                  alt="Alan Ayala"
+                  fill
+                  className="object-cover scale-110"
+                />
+              </div>
+              <div className="flex flex-col gap-3 justify-center items-start">
+                <h3 className="text-xl font-serif italic text-white/90 leading-tight">
+                  View full details
+                </h3>
+                <a 
+                  href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-white text-black font-bold font-mono text-[10px] uppercase tracking-widest rounded-full shadow-lg shrink-0 text-center hover:scale-105 transition-transform"
+                >
+                  Download CV
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

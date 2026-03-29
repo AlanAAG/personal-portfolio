@@ -114,7 +114,7 @@ export default function GlobalMap() {
   const pathLength = timelineProgress;
 
   return (
-    <section id="map" ref={container} className="h-[400vh] md:h-[400vh] relative bg-black text-white">
+    <section id="map" ref={container} className="min-h-screen md:h-[400vh] relative bg-black text-white">
       {/* Sticky Viewport Container - Desktop Only */}
       <div className="sticky top-0 h-screen w-full hidden md:flex flex-col items-center justify-center overflow-hidden">
         
@@ -174,19 +174,18 @@ export default function GlobalMap() {
         </div>
         
         <div className="w-full flex flex-col gap-6">
-          {nodes.map((node, i) => (
+          {/* Completed / Current nodes */}
+          {nodes.filter(n => n.status !== 'upcoming').map((node, i) => (
             <Link href={`/experience/${node.id}`} key={i} className="block group">
               <div className={`p-8 rounded-[2rem] border backdrop-blur-xl transition-all duration-500 shadow-xl ${
                 node.status === 'completed' ? 'bg-[#6339FF]/5 border-[#6339FF]/30 shadow-[0_0_30px_rgba(99,57,255,0.1)]' :
-                node.status === 'in-progress' ? 'bg-white/5 border-white/20' :
-                'bg-black/40 border-white/5 opacity-50'
+                'bg-white/5 border-white/20'
               }`}>
                 <div className="flex justify-between items-start mb-8">
                    <div className="flex flex-col gap-2">
                      <span className={`text-[9px] px-3 py-1 rounded-full font-bold tracking-[0.2em] uppercase w-max ${
                        node.status === 'completed' ? 'bg-[#6339FF]/20 text-[#6339FF]' :
-                       node.status === 'in-progress' ? 'bg-white text-black' :
-                       'bg-white/10 text-white/50'
+                       'bg-white text-black'
                      }`}>
                        {node.status === 'in-progress' ? 'Current' : node.status}
                      </span>
@@ -202,6 +201,30 @@ export default function GlobalMap() {
               </div>
             </Link>
           ))}
+
+          {/* Upcoming Nodes Compact Row */}
+          <div className="mt-8 w-screen -ml-6 border-t border-white/10 pt-10 px-6 overflow-hidden">
+            <h3 className="text-[10px] font-mono text-white/40 mb-6 uppercase tracking-[0.2em] ml-2">Upcoming Destinations</h3>
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 w-full no-scrollbar pb-10 pr-6">
+              {nodes.filter(n => n.status === 'upcoming').map((node, i) => (
+                <Link href={`/experience/${node.id}`} key={i} className="min-w-[65vw] shrink-0 snap-start block group">
+                  <div className="p-6 rounded-[1.5rem] bg-black/40 border border-white/5 opacity-70 h-full flex flex-col justify-between group-hover:opacity-100 transition-opacity">
+                    <div className="flex justify-between items-start mb-8">
+                       <div className="flex flex-col gap-1">
+                         <span className="text-[8px] px-2 py-0.5 rounded-sm font-bold tracking-[0.2em] uppercase w-max bg-white/10 text-white/50">
+                           Upcoming
+                         </span>
+                         <h3 className="text-xl font-bold text-white uppercase tracking-tight mt-2">{node.name}</h3>
+                       </div>
+                    </div>
+                    <p className="text-[9px] text-white/30 font-mono uppercase tracking-[0.2em] leading-relaxed border-t border-white/5 pt-4">
+                      {node.detail.replace(/[()]/g, '')}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

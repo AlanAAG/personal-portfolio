@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll, Variants } from 'framer-motion';
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
@@ -124,9 +124,18 @@ function AnimatedWord({
 
 export default function Hero() {
   const { scrollY } = useScroll();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Transform scale and Y position based on global scroll
-  const yOffset = useTransform(scrollY, [0, 800], ["0vh", "-91vh"]);
-  const scale = useTransform(scrollY, [0, 800], [1, 0.15]);
+  const yOffset = useTransform(scrollY, [0, 800], ["0vh", isMobile ? "-76vh" : "-85vh"]);
+  const scale = useTransform(scrollY, [0, 800], [1, isMobile ? 0.3 : 0.15]);
 
   return (
     <>
@@ -146,7 +155,7 @@ export default function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="absolute bottom-8 left-10 flex flex-col items-start gap-2 z-10"
+          className="absolute bottom-4 md:bottom-8 left-4 md:left-10 flex flex-col items-start gap-2 z-10"
         >
           <span className="text-[10px] uppercase tracking-[0.25em] text-white/30 font-inter text-shadow">Scroll</span>
           <motion.div
@@ -163,9 +172,13 @@ export default function Hero() {
       {/* FIXED Name block - Stays present and moves/shrinks on scroll */}
       <motion.div 
         style={{ y: yOffset, scale, transformOrigin: 'bottom center' }}
-        className="fixed bottom-8 left-0 right-0 z-[100] flex flex-col items-center justify-end pointer-events-none mix-blend-difference"
+        className="fixed bottom-24 md:bottom-8 left-0 right-0 z-[100] flex flex-col items-center justify-end pointer-events-none mix-blend-difference"
       >
-        <div className="w-full flex flex-col items-center">
+        <div 
+          className="w-full flex flex-col items-center pointer-events-auto cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          title="Back to top"
+        >
 
           {/* ALAN AYALA — non-wrapped containers, characters wrap themselves */}
           <div className="flex flex-wrap items-baseline justify-center w-full leading-[0.82] mb-2 gap-[4vw] md:gap-[2.5vw]">

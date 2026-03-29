@@ -155,7 +155,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={nodeRef} className={`relative flex items-center justify-between w-full my-12 lg:my-24 z-10 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+    <div ref={nodeRef} className={`relative flex items-center justify-between w-full my-6 lg:my-24 z-10 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
       
       {/* Central Connector System - Desktop Only */}
       <div className="absolute left-1/2 -translate-x-1/2 items-center justify-center z-20 hidden lg:flex">
@@ -178,7 +178,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
       {/* Content Box */}
       <motion.div 
         style={{ y, opacity }}
-        className={`w-full lg:w-[42%] p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 lg:border-white/10 rounded-3xl ${isEven ? 'lg:text-right' : 'lg:text-left'} mt-8 lg:mt-0 relative group ${data.link ? 'hover:bg-white/10 hover:border-[#6339FF]/50 transition-all duration-300' : ''}`}
+        className={`w-full lg:w-[42%] p-6 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 lg:border-white/10 rounded-3xl ${isEven ? 'lg:text-right' : 'lg:text-left'} mt-4 lg:mt-0 relative group ${data.link ? 'hover:bg-white/10 hover:border-[#6339FF]/50 transition-all duration-300 shadow-xl' : ''}`}
       >
         {/* Mobile Left Border indicator */}
         <div className="lg:hidden absolute top-0 left-0 w-1 h-full bg-[#6339FF]/30 rounded-l-3xl" />
@@ -187,7 +187,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
         )}
 
         {/* Mobile Media Integration */}
-        <div className="lg:hidden w-full mb-6 rounded-xl overflow-hidden aspect-video border border-white/10 relative">
+        <div className="lg:hidden w-full mb-4 rounded-xl overflow-hidden aspect-video border border-white/10 relative">
           {data.mediaType === 'video' ? (
             <video
               src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
@@ -214,13 +214,12 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
         <h3 className="text-xl md:text-2xl font-bold mb-2">{data.title}</h3>
         <h4 className={`text-lg md:text-xl font-serif italic text-white/70 mb-4 ${data.link ? 'group-hover:text-[#6339FF] transition-colors flex items-center ' + (isEven ? 'lg:justify-end' : 'lg:justify-start') + ' gap-2' : ''}`}>
           {data.entity}
-          {data.link && <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[#6339FF] font-sans not-italic translate-y-[1px]">↗</span>}
         </h4>
         <div className={`flex flex-col gap-1 font-mono text-[10px] md:text-xs text-white/40 uppercase tracking-widest mb-4 ${isEven ? 'lg:items-end' : 'lg:items-start'}`}>
           <span>{data.location}</span>
           <span className="text-white/60 font-semibold">{data.year}</span>
         </div>
-        <p className="text-white/80 leading-relaxed font-light text-base">
+        <p className="text-white/80 leading-relaxed font-light text-sm md:text-base line-clamp-3 md:line-clamp-none">
           {data.description}
         </p>
 
@@ -229,6 +228,15 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
             <span className="text-[0.65rem] font-mono tracking-widest uppercase text-white/30 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500/50"></span>
               Verified Credential
+            </span>
+          </div>
+        )}
+
+        {/* Read Full Story Affordance (Mobile/Tablet Compact focus) */}
+        {data.link && (
+          <div className={`mt-5 flex ${isEven ? 'lg:justify-end' : 'lg:justify-start'}`}>
+            <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] text-[#6339FF] border border-[#6339FF]/50 rounded-full px-4 py-2 flex items-center gap-2 group-hover:bg-[#6339FF] group-hover:text-black transition-colors duration-300">
+              Read Full Story <span className="text-sm leading-none translate-y-[1px]">→</span>
             </span>
           </div>
         )}
@@ -314,9 +322,9 @@ export default function About() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center px-4 md:px-12 lg:px-20 py-32 bg-black text-white relative z-10 w-full overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center px-4 md:px-12 lg:px-20 py-20 md:py-32 bg-black text-white relative z-10 w-full overflow-hidden">
       <div className="max-w-[1400px] w-full mx-auto relative">
-        <div className="mb-20 md:mb-32 max-w-4xl text-center mx-auto flex flex-col items-center">
+        <div className="mb-10 md:mb-32 max-w-4xl text-center mx-auto flex flex-col items-center">
           <h2 className="text-[10px] md:text-xs font-mono text-[#6339FF] mb-6 md:mb-8 uppercase tracking-widest">Who I Am</h2>
           <p className="text-2xl md:text-5xl lg:text-6xl font-light leading-tight text-white/90 font-sans tracking-tight mb-8">
             I am a 20-year-old entrepreneur and <span className="font-bold">Global Builder</span> engineering scalable solutions across continents.
@@ -327,7 +335,7 @@ export default function About() {
         </div>
 
         {/* TIMELINE CONTAINER */}
-        <div ref={containerRef} className="relative w-full max-w-6xl mx-auto py-20">
+        <div ref={containerRef} className="relative w-full max-w-6xl mx-auto pt-0 pb-20 md:py-20">
           
           {/* THE WIGGLY LINE */}
           <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-40 z-0 opacity-50 lg:opacity-100 pointer-events-none hidden md:block">
@@ -355,7 +363,7 @@ export default function About() {
           </div>
 
           {/* NODES */}
-          <div className="flex flex-col relative z-10 pt-10 pb-32">
+          <div className="flex flex-col relative z-10 pt-4 md:pt-10 pb-32">
             {timelineData.map((node, i) => (
               <TimelineNode key={i} data={node} index={i} />
             ))}

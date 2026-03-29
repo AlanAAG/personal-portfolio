@@ -80,7 +80,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 20 }}
             transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-            className="relative w-[90vw] h-[90vh] bg-neutral-900 border border-white/10 rounded-3xl p-10 md:p-20 overflow-y-auto shadow-2xl"
+            className="relative w-[95vw] h-[90vh] bg-neutral-900 border border-white/10 rounded-3xl p-6 md:p-20 overflow-y-auto shadow-2xl"
             onMouseDown={(e) => e.stopPropagation()}
           >
             <button
@@ -113,53 +113,53 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                   </motion.div>
                 ) : (
                   <div>
-                    <h2 className="text-[8vw] font-bold text-white font-inter leading-none mb-4">
+                    <h2 className="text-4xl md:text-[8vw] font-bold text-white font-inter leading-none mb-2 md:mb-4 tracking-tighter">
                       LET'S TALK
                     </h2>
-                    <p className="text-xl text-white/60 max-w-xl mb-10">
+                    <p className="hidden md:block text-xl text-white/60 max-w-xl mb-10">
                       Have a project in mind? I'm always open to discussing new opportunities and ideas.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 pt-2 md:pt-0">
+                      <div className="grid grid-cols-2 gap-4 md:gap-6">
                         <div className="group">
-                          <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Name *</label>
-                          <input name="name" type="text" required className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors" placeholder="John Doe" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Name *</label>
+                          <input name="name" type="text" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="John Doe" />
                         </div>
                         <div className="group">
-                          <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Email *</label>
-                          <input name="email" type="email" required className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors" placeholder="john@example.com" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Email *</label>
+                          <input name="email" type="email" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="john@example.com" />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-2 gap-4 md:gap-6">
                         <div className="group">
-                          <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Organization</label>
-                          <input name="organization" type="text" className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors" placeholder="Company Name" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Company</label>
+                          <input name="organization" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="Company Name" />
                         </div>
                         <div className="group">
-                          <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Service Type</label>
-                          <input name="service" type="text" className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors" placeholder="Web Design, Development..." />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Need</label>
+                          <input name="service" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="Type..." />
                         </div>
                       </div>
 
                       <div className="group">
-                        <label className="block text-xs font-mono text-white/50 mb-2 uppercase tracking-widest">Message *</label>
-                        <textarea name="message" required rows={4} className="w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-white transition-colors resize-none" placeholder="Tell me about your project..." />
+                        <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Message *</label>
+                        <textarea name="message" required rows={2} className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors resize-none md:min-h-[100px]" placeholder="Tell me about your project..." />
                       </div>
 
-                      <div className="pt-4 pb-12 overflow-visible">
+                      <div className="pt-2 md:pt-4 pb-4 md:pb-12 overflow-visible">
                         <MagneticButton>
                           <button 
                             disabled={status === 'submitting'}
                             type="submit" 
-                            className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 disabled:bg-neutral-600 disabled:text-white/50 transition-colors uppercase tracking-widest text-sm relative z-10"
+                            className="w-full md:w-auto px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 disabled:bg-neutral-600 disabled:text-white/50 transition-colors uppercase tracking-widest text-xs md:text-sm relative z-10"
                           >
                             {status === 'submitting' ? 'Sending...' : 'Send Message'}
                           </button>
                         </MagneticButton>
                         {status === 'error' && (
-                          <p className="mt-4 text-xs font-mono text-red-500 uppercase tracking-widest">Something went wrong. Please try again.</p>
+                          <p className="mt-2 md:mt-4 text-[10px] md:text-xs font-mono text-red-500 uppercase tracking-widest">Something went wrong. Please try again.</p>
                         )}
                       </div>
                     </form>

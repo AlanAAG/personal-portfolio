@@ -210,60 +210,120 @@ export default async function WorkPage(props: { params: Promise<{ slug: string }
         
         <div className="h-[1px] w-full bg-white/10 mb-16" />
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          <div className="lg:col-span-1">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-6">Tech Stack & Tools</h3>
-            <div className="flex flex-wrap gap-2">
-              {data.stack.map((item: string, i: number) => (
-                <span key={i} className="px-3 py-1.5 border border-white/10 rounded-full text-xs font-mono tracking-wider text-white/70">
-                  {item}
-                </span>
-              ))}
+        {/* --- DESKTOP LAYOUT --- */}
+        <div className="hidden lg:block w-full">
+          <div className="grid grid-cols-3 gap-16 w-full">
+            <div className="col-span-1">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-6">Tech Stack & Tools</h3>
+              <div className="flex flex-wrap gap-2">
+                {data.stack.map((item: string, i: number) => (
+                  <span key={i} className="px-3 py-1.5 border border-white/10 rounded-full text-xs font-mono tracking-wider text-white/70">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-span-2">
+              <h2 className="text-4xl font-bold tracking-tight mb-8 leading-tight">
+                {data.summary}
+              </h2>
+              <div className="space-y-8">
+                {data.bullets.map((bullet: string, i: number) => (
+                  <div key={i} className="flex gap-6">
+                    <div className="mt-3 w-2 h-2 rounded-full bg-[#6339FF] shrink-0 shadow-[0_0_10px_rgba(99,57,255,0.5)]" />
+                    <p className="text-xl text-white/80 leading-relaxed font-normal">
+                      {bullet}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-8 leading-tight">
-              {data.summary}
-            </h2>
-            <div className="space-y-8">
-              {data.bullets.map((bullet: string, i: number) => (
-                <div key={i} className="flex gap-6">
-                  <div className="mt-3 w-2 h-2 rounded-full bg-[#6339FF] shrink-0 shadow-[0_0_10px_rgba(99,57,255,0.5)]" />
-                  <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light md:font-normal">
-                    {bullet}
-                  </p>
+          {/* PITCHDECK EMBED */}
+          {data.pitchdeck && (
+            <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
+          )}
+
+          {/* DYNAMIC IMAGE GALLERY */}
+          {data.images && data.images.length > 0 && (
+            <div className="mt-32 w-full grid grid-cols-2 gap-10">
+              {data.images.map((img: string, i: number) => (
+                <div 
+                  key={i} 
+                  className={`relative w-full h-[75vh] rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/10 ${i % 3 === 0 ? 'col-span-2' : 'col-span-1'} transform transition-transform duration-700 hover:scale-[1.01]`}
+                >
+                  <Image
+                    src={img}
+                    alt={`${data.title} graphical asset ${i + 1}`}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                    sizes="50vw"
+                    priority={i === 0}
+                  />
                 </div>
               ))}
             </div>
-          </div>
+          )}
         </div>
 
-        {/* PITCHDECK EMBED */}
-        {data.pitchdeck && (
-          <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
-        )}
+        {/* --- MOBILE LAYOUT (INTERLEAVED) --- */}
+        <div className="block lg:hidden w-full">
+          <h3 className="text-[10px] font-mono uppercase tracking-widest text-white/50 mb-4 border-b border-white/10 pb-4">Tech Stack & Tools</h3>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {data.stack.map((item: string, i: number) => (
+              <span key={i} className="px-3 py-1.5 border border-white/10 rounded-full text-[10px] font-mono tracking-wider text-white/70 uppercase">
+                {item}
+              </span>
+            ))}
+          </div>
 
-        {/* DYNAMIC IMAGE GALLERY */}
-        {data.images && data.images.length > 0 && (
-          <div className="mt-24 md:mt-32 w-full grid grid-cols-2 gap-4 md:gap-10">
-            {data.images.map((img: string, i: number) => (
-              <div 
-                key={i} 
-                className={`relative w-full h-[45vh] md:h-[75vh] rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/10 ${i % 3 === 0 ? 'col-span-2' : 'col-span-1'} lg:col-span-1 transform transition-transform duration-700 hover:scale-[1.01]`}
-              >
-                <Image
-                  src={img}
-                  alt={`${data.title} graphical asset ${i + 1}`}
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority={i === 0}
-                />
+          <h2 className="text-2xl font-bold tracking-tight mb-8 leading-tight">
+            {data.summary}
+          </h2>
+
+          <div className="flex flex-col gap-8">
+            {Array.from({ length: Math.max(data.bullets?.length || 0, Math.ceil((data.images?.length || 0) / 2)) }).map((_, i) => (
+              <div key={i} className="flex flex-col gap-6">
+                
+                {/* Text Bullet */}
+                {data.bullets && data.bullets[i] && (
+                  <div className="flex gap-4">
+                    <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#6339FF] shrink-0 shadow-[0_0_10px_rgba(99,57,255,0.5)]" />
+                    <p className="text-sm text-white/80 leading-relaxed font-light">
+                      {data.bullets[i]}
+                    </p>
+                  </div>
+                )}
+
+                {/* Image Pair (2 per row) */}
+                {data.images && (data.images[i * 2] || data.images[i * 2 + 1]) && (
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    {data.images[i * 2] && (
+                      <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg border border-white/10">
+                        <Image src={data.images[i * 2]} alt={`Asset ${i * 2}`} fill className="object-cover" sizes="50vw" priority={i === 0} />
+                      </div>
+                    )}
+                    {data.images[i * 2 + 1] && (
+                      <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg border border-white/10">
+                        <Image src={data.images[i * 2 + 1]} alt={`Asset ${i * 2 + 1}`} fill className="object-cover" sizes="50vw" />
+                      </div>
+                    )}
+                  </div>
+                )}
+
               </div>
             ))}
           </div>
-        )}
+
+          {/* MOBILE PITCHDECK EMBED */}
+          {data.pitchdeck && (
+            <div className="mt-12">
+              <PitchdeckEmbed src={data.pitchdeck} title={`${data.title} Pitchdeck`} />
+            </div>
+          )}
+        </div>
 
       </div>
     </main>
