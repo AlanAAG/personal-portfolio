@@ -26,6 +26,7 @@ export default function SocialLinks() {
         <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">INSTAGRAM</a>
         <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LINKEDIN</a>
         <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GITHUB</a>
+        <a href="https://medium.com/@alanayalag" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">MEDIUM</a>
         <a href="mailto:alanayalag@gmail.com" className="hover:text-white transition-colors">EMAIL</a>
       </motion.div>
     </motion.div>

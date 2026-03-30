@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import ContactModal from '@/components/ui/ContactModal';
 
@@ -11,6 +11,18 @@ export default function StickyNav() {
   const [time, setTime] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [showLogo, setShowLogo] = useState(pathname !== '/');
+
+  useEffect(() => {
+    setShowLogo(pathname !== '/');
+  }, [pathname]);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (pathname === '/') {
+      setShowLogo(latest > 750);
+    }
+  });
 
   useEffect(() => {
     const updateTime = () => {
@@ -43,14 +55,23 @@ export default function StickyNav() {
           <span>{time}</span>
         </div>
 
-        {/* Center: ALAN AYALA Logo (Only on non-home pages) */}
+        {/* Center: ALAN AYALA Logo */}
         <div className="w-2/4 md:w-1/3 flex justify-center items-center">
-          {pathname !== '/' && (
-            <Link href="/" className="flex items-center gap-1 md:gap-2 group mix-blend-difference pointer-events-auto leading-none pt-1">
-              <span className="font-sans font-bold text-lg md:text-xl tracking-tighter group-hover:opacity-70 transition-opacity leading-none uppercase">ALAN</span>
-              <span className="font-serif italic text-xl md:text-2xl font-normal text-white/90 group-hover:opacity-70 transition-opacity leading-none translate-y-[1px] uppercase">AYALA</span>
-            </Link>
-          )}
+          <AnimatePresence>
+            {showLogo && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link href="/" className="flex items-center gap-1 md:gap-2 group mix-blend-difference pointer-events-auto leading-none pt-1">
+                  <span className="font-sans font-bold text-lg md:text-xl tracking-tighter group-hover:opacity-70 transition-opacity leading-none uppercase">ALAN</span>
+                  <span className="font-serif italic text-xl md:text-2xl font-normal text-white/90 group-hover:opacity-70 transition-opacity leading-none translate-y-[1px] uppercase">AYALA</span>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Right: Navigation */}

@@ -181,6 +181,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                             <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">LinkedIn</a>
                             <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">GitHub</a>
                             <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">Instagram</a>
+                            <a href="https://medium.com/@alanayalag" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">Medium</a>
                           </div>
                         </div>
                       </div>
@@ -191,7 +192,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
               </div>
 
               {/* DESKTOP ONLY: Side Column Contact Info */}
-              <div className="hidden md:flex md:w-1/3 flex-col justify-end gap-10">
+              <div className="hidden md:flex md:w-1/3 flex-col justify-start md:pt-14 gap-10">
                 <div>
                   <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">Contact Details</h3>
                   <div className="space-y-4">
@@ -208,6 +209,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                     <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">LinkedIn</a>
                     <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">GitHub</a>
                     <a href="https://www.instagram.com/a.ayala.g/" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">Instagram</a>
+                    <a href="https://medium.com/@alanayalag" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">Medium</a>
                   </div>
                 </div>
               </div>

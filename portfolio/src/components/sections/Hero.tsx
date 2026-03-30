@@ -134,8 +134,10 @@ export default function Hero() {
   }, []);
 
   // Transform scale and Y position based on global scroll
-  const yOffset = useTransform(scrollY, [0, 800], ["0svh", isMobile ? "-79svh" : "-88svh"]);
+  // Formatted identically to target to allow smooth numerical interpolation in Framer Motion
+  const yOffset = useTransform(scrollY, [0, 800], ["calc(0svh + 0px)", isMobile ? "calc(-100svh + 105px)" : "calc(-100svh + 45px)"]);
   const scale = useTransform(scrollY, [0, 800], [1, isMobile ? 0.3 : 0.15]);
+  const opacity = useTransform(scrollY, [700, 800], [1, 0]);
 
   return (
     <>
@@ -171,7 +173,7 @@ export default function Hero() {
 
       {/* FIXED Name block - Stays present and moves/shrinks on scroll */}
       <motion.div 
-        style={{ y: yOffset, scale, transformOrigin: 'bottom center' }}
+        style={{ y: yOffset, scale, opacity, transformOrigin: 'bottom center' }}
         className="fixed top-0 left-0 right-0 h-[100svh] pb-24 md:pb-8 z-[100] flex flex-col items-center justify-end pointer-events-none mix-blend-difference"
       >
         <div 
