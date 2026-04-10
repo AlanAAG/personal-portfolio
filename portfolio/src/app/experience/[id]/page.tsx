@@ -49,9 +49,15 @@ const experienceData: Record<string, any> = {
         timeline: "Oct 2025 - Present",
         description: "Architected a scalable RAG system powered by FastAPI and Supabase to support 250+ students with instant, high-accuracy context handling and query condensing.",
         link: "/info#experience"
+      },
+      {
+        title: "Selected Founder",
+        company: "YC Startup School India",
+        timeline: "2026",
+        description: "Selected for Y Combinator's exclusive India cohort, leveraging intensive YC methodologies to refine go-to-market frameworks alongside top-tier technical founders. Secured $25,000 USD in AI credits during the program to aggressively scale ongoing AI-driven platforms and optimize computational infrastructure."
       }
     ],
-    images: ["tiora_1", "tiora_3", "tiora_4", "india_1"]
+    images: ["tiora_1", "tiora_3", "tiora_4", "india_1", "YC_school"]
   },
   "milan": {
     title: "Milan, Italy",

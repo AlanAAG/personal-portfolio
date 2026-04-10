@@ -34,13 +34,13 @@ const projects = [
     image: "bc_1?v=2"
   },
   {
-    title: "AI Wardrobe Assistant",
+    title: "AI Travel Planner",
     slug: "wardrobe-assistant",
     category: "Agentic Automation",
     description: "Built an intelligent flight-tracking and packing system using LLM agents, Notion API, and OpenWeather integrations.",
     stack: ["Python", "n8n", "Render", "APIs"],
     color: "#1a1a1a",
-    image: "wardrobe"
+    image: "travel_planner"
   }
 ];
 

@@ -72,6 +72,7 @@ const projectsData: Record<string, any> = {
       "Designed modular architecture with LLM Agents and custom caching to optimize rate limits; deployed via Render with system monitoring."
     ],
     stack: ["Python", "n8n", "Render", "APIs", "Supabase"],
+    video: "wardrobe",
     links: [
       { label: "GitHub", url: "https://github.com/AlanAAG/Wardrobe_Assistant" }
     ]

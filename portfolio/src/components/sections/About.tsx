@@ -17,6 +17,15 @@ const timelineData = [
     mediaId: "experience_1"
   },
   {
+    year: "March 2026 - Present",
+    title: "Fullstack Software Engineering Intern",
+    entity: "Craft OS",
+    location: "Remote",
+    category: "Experience",
+    description: "Engineered full-stack solutions for an enterprise-grade multi-agent B2B SaaS platform, and an open-source autonomous AI assistant. Architected a highly scalable Python-based agent architecture featuring multi-LLM routing, ChromaDB-powered RAG memory, and dynamic tool execution across 100+ API integrations.",
+    mediaId: "CraftOS"
+  },
+  {
     year: "Jan 2026 - Present",
     title: "Co-Founder",
     entity: "Tiora (Demi-fine Jewellery)",
@@ -73,7 +82,7 @@ const timelineData = [
     location: "Mexico, UAE",
     category: "Projects",
     description: "Built a Python-based Agentic Workflow integrating Notion, Supabase, and OpenWeather APIs to automate travel packing and outfit planning deployed via Render.",
-    mediaId: "experience_7",
+    mediaId: "travel_planner",
     link: "/work/wardrobe-assistant"
   },
   {
