@@ -6,16 +6,36 @@ import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import ContactModal from '@/components/ui/ContactModal';
+import { Menu, X } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
+
+function LangToggle({ className = '' }: { className?: string }) {
+  const { lang, setLang } = useLang();
+  return (
+    <button
+      onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+      aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'}
+      className={`font-mono text-[10px] md:text-xs uppercase tracking-widest flex items-center gap-1.5 ${className}`}
+    >
+      <span className={lang === 'en' ? 'text-white' : 'text-white/40 hover:text-white/70 transition-colors'}>EN</span>
+      <span className="text-white/25">/</span>
+      <span className={lang === 'es' ? 'text-white' : 'text-white/40 hover:text-white/70 transition-colors'}>ES</span>
+    </button>
+  );
+}
 
 export default function StickyNav() {
   const [time, setTime] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { lang } = useLang();
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [showLogo, setShowLogo] = useState(pathname !== '/');
 
   useEffect(() => {
     setShowLogo(pathname !== '/');
+    setMenuOpen(false);
   }, [pathname]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -28,7 +48,7 @@ export default function StickyNav() {
     const updateTime = () => {
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Asia/Kolkata',
+        timeZone: 'America/Mexico_City',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
@@ -51,8 +71,10 @@ export default function StickyNav() {
       >
         {/* Left: Location & Time */}
         <div className="flex items-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs uppercase tracking-widest w-1/4 md:w-1/3">
-          <span className="hidden md:inline">New Delhi, IST</span>
+          <span className="hidden md:inline">{lang === 'es' ? 'Ciudad de México, CST' : 'Mexico City, CST'}</span>
           <span>{time}</span>
+          <span className="hidden md:inline text-white/20">·</span>
+          <LangToggle className="hidden md:flex" />
         </div>
 
         {/* Center: ALAN AYALA Logo */}
@@ -74,19 +96,87 @@ export default function StickyNav() {
           </AnimatePresence>
         </div>
 
-        {/* Right: Navigation */}
-        <div className="flex items-center gap-4 md:gap-8 font-medium text-[10px] md:text-sm uppercase tracking-widest justify-end w-1/4 md:w-1/3">
+        {/* Right: Navigation (Desktop) */}
+        <div className="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-widest justify-end w-1/3">
           <Link href="/info" className="hover:opacity-50 transition-opacity whitespace-nowrap">
-            About
+            {lang === 'es' ? 'Acerca' : 'About'}
           </Link>
-          <button 
+          <Link href="/blog" className="hover:opacity-50 transition-opacity whitespace-nowrap">
+            Blog
+          </Link>
+          <Link href="/certifications" className="hover:opacity-50 transition-opacity whitespace-nowrap">
+            {lang === 'es' ? 'Credenciales' : 'Credentials'}
+          </Link>
+          <button
             onClick={() => setIsModalOpen(true)}
-            className="hover:opacity-50 transition-opacity"
+            className="hover:opacity-50 transition-opacity uppercase tracking-widest"
           >
-            Contact
+            {lang === 'es' ? 'Contacto' : 'Contact'}
+          </button>
+        </div>
+
+        {/* Right: Burger (Mobile) */}
+        <div className="flex md:hidden justify-end w-1/4">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            className="p-1"
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </motion.div>
+
+      {/* Mobile Fullscreen Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 md:hidden"
+          >
+            {[
+              { label: lang === 'es' ? 'Inicio' : 'Home', href: '/' },
+              { label: lang === 'es' ? 'Acerca' : 'About', href: '/info' },
+              { label: 'Blog', href: '/blog' },
+              { label: lang === 'es' ? 'Credenciales' : 'Credentials', href: '/certifications' },
+            ].map((item, i) => (
+              <motion.div
+                key={item.href}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 * i, duration: 0.3 }}
+              >
+                <Link
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-4xl font-serif italic text-white/90 hover:text-[#6339FF] transition-colors uppercase tracking-tight"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
+            <motion.button
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32, duration: 0.3 }}
+              onClick={() => { setMenuOpen(false); setIsModalOpen(true); }}
+              className="mt-4 px-8 py-3 border border-white/30 rounded-full font-mono text-xs uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-colors"
+            >
+              {lang === 'es' ? 'Contacto' : 'Contact'}
+            </motion.button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            >
+              <LangToggle className="mt-6 scale-125" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll, Variants } from 'framer-motion';
+import { useLang } from '@/lib/i18n';
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
 
@@ -38,7 +39,7 @@ const fadeUp: Variants = {
 
 // ─── MagneticElement ──────────────────────────────────────────────────────────
 // Physics applied to the CONTAINER, not individual characters.
-// One onMouseMove event, one spring animation — O(1) cost regardless of text length.
+// One onMouseMove event, one spring animation, O(1) cost regardless of text length.
 
 function MagneticElement({
   children,
@@ -124,6 +125,7 @@ function AnimatedWord({
 
 export default function Hero() {
   const { scrollY } = useScroll();
+  const { lang } = useLang();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -143,7 +145,7 @@ export default function Hero() {
     <>
       <section className="min-h-screen w-full flex flex-col relative overflow-hidden bg-transparent text-white pointer-events-none z-10">
 
-        {/* Subtle radial vignette — cheap gradient, no repaint */}
+        {/* Subtle radial vignette, cheap gradient, no repaint */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
@@ -159,7 +161,7 @@ export default function Hero() {
           animate="visible"
           className="absolute bottom-4 md:bottom-8 left-4 md:left-10 flex flex-col items-start gap-2 z-10"
         >
-          <span className="text-[10px] uppercase tracking-[0.25em] text-white/30 font-inter text-shadow">Scroll</span>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-white/30 font-inter text-shadow">{lang === 'es' ? 'Desliza' : 'Scroll'}</span>
           <motion.div
             className="w-[1px] h-12 bg-white/20 origin-top"
             animate={{ scaleY: [0, 1, 0] }}
@@ -179,10 +181,10 @@ export default function Hero() {
         <div 
           className="w-full flex flex-col items-center pointer-events-auto cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          title="Back to top"
+          title={lang === 'es' ? 'Volver arriba' : 'Back to top'}
         >
 
-          {/* ALAN AYALA — non-wrapped containers, characters wrap themselves */}
+          {/* ALAN AYALA, non-wrapped containers, characters wrap themselves */}
           <div className="flex flex-wrap items-baseline justify-center w-full leading-[0.82] mb-2 gap-[4vw] md:gap-[2.5vw]">
 
             <AnimatedWord
@@ -206,7 +208,7 @@ export default function Hero() {
           >
             <span className="h-[1px] w-8 md:w-12 bg-white/30" />
             <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-white/50 font-inter text-center">
-              AI-Driven Technical Founder
+              {lang === 'es' ? 'Fundador Técnico Impulsado por IA' : 'AI-Driven Technical Founder'}
             </p>
             <span className="h-[1px] w-8 md:w-12 bg-white/30" />
           </motion.div>

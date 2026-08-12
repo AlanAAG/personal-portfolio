@@ -6,6 +6,13 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasPointer, setHasPointer] = useState(false);
+
+  useEffect(() => {
+    // Only render on devices with a real hoverable pointer (mouse/trackpad).
+    // On touch screens, taps fire synthetic mouse events that freeze the dot in place.
+    setHasPointer(window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+  }, []);
 
   // Raw mouse coordinates
   const mouseX = useMotionValue(0);
@@ -58,6 +65,8 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, [mouseX, mouseY, isVisible]);
+
+  if (!hasPointer) return null;
 
   return (
     <motion.div

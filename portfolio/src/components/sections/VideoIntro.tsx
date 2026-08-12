@@ -4,8 +4,10 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import CloudVideo from '@/components/ui/CloudVideo';
 import { Volume2, VolumeX } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export default function VideoIntro() {
+  const { lang } = useLang();
   const containerRef = useRef<HTMLElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   
@@ -42,7 +44,7 @@ export default function VideoIntro() {
           <button 
             onClick={() => setIsMuted(!isMuted)}
             className="absolute bottom-8 right-8 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 z-30"
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            aria-label={isMuted ? (lang === 'es' ? 'Activar sonido' : 'Unmute video') : (lang === 'es' ? 'Silenciar video' : 'Mute video')}
           >
             {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
           </button>

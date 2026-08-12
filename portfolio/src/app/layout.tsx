@@ -11,6 +11,7 @@ import StickyNav from "@/components/layout/StickyNav";
 import Footer from "@/components/layout/Footer";
 
 import CanvasSystem from "@/components/layout/CanvasSystem";
+import { LanguageProvider } from "@/lib/i18n";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +29,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alan Ayala — AI-Driven Technical Founder",
+  title: "Alan Ayala, AI-Driven Technical Founder",
   description:
     "AI-Driven Technical Founder engineering scalable solutions across continents. Based globally.",
   icons: {
@@ -50,15 +51,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white antialiased selection:bg-white/20`}
       >
-        <CanvasSystem />
-        <CustomCursor />
-        <SocialLinks />
-        <ScrollProgress />
-        <StickyNav />
-        <SmoothScroll>
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <LanguageProvider>
+          <CanvasSystem />
+          <CustomCursor />
+          <SocialLinks />
+          <ScrollProgress />
+          <StickyNav />
+          <SmoothScroll>
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );

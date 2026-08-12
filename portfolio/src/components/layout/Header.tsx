@@ -23,6 +23,9 @@ export default function Header() {
           <Link href="/info" className="text-white uppercase tracking-widest text-[10px] md:text-xs font-medium hover:underline">
             About Me
           </Link>
+          <Link href="/blog" className="text-white uppercase tracking-widest text-[10px] md:text-xs font-medium hover:underline">
+            Blog
+          </Link>
           <MagneticButton>
             <button 
               onClick={() => setIsModalOpen(true)}

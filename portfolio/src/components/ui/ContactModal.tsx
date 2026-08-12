@@ -4,9 +4,59 @@ import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2 } from 'lucide-react';
 import MagneticButton from '@/components/ui/MagneticButton';
+import { useLang } from '@/lib/i18n';
 
 export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const { lang } = useLang();
+
+  const t = lang === 'es'
+    ? {
+        closeModal: 'Cerrar ventana',
+        sentTitle: 'MENSAJE ENVIADO',
+        sentBody: 'Gracias por escribirme. Normalmente respondo en menos de 24 horas.',
+        closeWindow: 'Cerrar Ventana',
+        title: 'HABLEMOS',
+        subtitle: '¿Tienes un proyecto en mente? Siempre estoy abierto a platicar sobre nuevas oportunidades e ideas.',
+        name: 'Nombre *',
+        namePlaceholder: 'Juan Pérez',
+        email: 'Correo *',
+        emailPlaceholder: 'juan@ejemplo.com',
+        company: 'Empresa',
+        companyPlaceholder: 'Nombre de la empresa',
+        need: 'Necesidad',
+        needPlaceholder: 'Escribe...',
+        message: 'Mensaje *',
+        messagePlaceholder: 'Cuéntame sobre tu proyecto...',
+        sending: 'Enviando...',
+        send: 'Enviar Mensaje',
+        error: 'Algo salió mal. Inténtalo de nuevo.',
+        contactDetails: 'Datos de Contacto',
+        socials: 'Redes',
+      }
+    : {
+        closeModal: 'Close modal',
+        sentTitle: 'MESSAGE SENT',
+        sentBody: 'Thank you for reaching out. I usually respond within 24 hours.',
+        closeWindow: 'Close Window',
+        title: "LET'S TALK",
+        subtitle: "Have a project in mind? I'm always open to discussing new opportunities and ideas.",
+        name: 'Name *',
+        namePlaceholder: 'John Doe',
+        email: 'Email *',
+        emailPlaceholder: 'john@example.com',
+        company: 'Company',
+        companyPlaceholder: 'Company Name',
+        need: 'Need',
+        needPlaceholder: 'Type...',
+        message: 'Message *',
+        messagePlaceholder: 'Tell me about your project...',
+        sending: 'Sending...',
+        send: 'Send Message',
+        error: 'Something went wrong. Please try again.',
+        contactDetails: 'Contact Details',
+        socials: 'Socials',
+      };
 
   // Close on Escape key
   useEffect(() => {
@@ -86,7 +136,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
             <button
               onClick={onClose}
               className="absolute top-6 right-6 p-2 hover:bg-white/10 rounded-full transition-colors z-[60]"
-              aria-label="Close modal"
+              aria-label={t.closeModal}
             >
               <X className="w-6 h-6 text-white" />
             </button>
@@ -100,52 +150,52 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                     className="h-full flex flex-col items-center justify-center text-center py-20"
                   >
                     <CheckCircle2 className="w-20 h-20 text-[#6339FF] mb-8" />
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tighter">MESSAGE SENT</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tighter">{t.sentTitle}</h2>
                     <p className="text-xl text-white/50 max-w-md mx-auto mb-10">
-                      Thank you for reaching out. I usually respond within 24 hours.
+                      {t.sentBody}
                     </p>
                     <button 
                       onClick={onClose}
                       className="text-sm font-mono uppercase tracking-widest text-white/40 hover:text-white transition-colors"
                     >
-                      Close Window
+                      {t.closeWindow}
                     </button>
                   </motion.div>
                 ) : (
                   <div>
                     <h2 className="text-4xl md:text-[8vw] font-bold text-white font-inter leading-none mb-2 md:mb-4 tracking-tighter">
-                      LET'S TALK
+                      {t.title}
                     </h2>
                     <p className="hidden md:block text-xl text-white/60 max-w-xl mb-10">
-                      Have a project in mind? I'm always open to discussing new opportunities and ideas.
+                      {t.subtitle}
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 pt-2 md:pt-0">
                       <div className="grid grid-cols-2 gap-4 md:gap-6">
                         <div className="group">
-                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Name *</label>
-                          <input name="name" type="text" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="John Doe" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">{t.name}</label>
+                          <input name="name" type="text" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder={t.namePlaceholder} />
                         </div>
                         <div className="group">
-                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Email *</label>
-                          <input name="email" type="email" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="john@example.com" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">{t.email}</label>
+                          <input name="email" type="email" required className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder={t.emailPlaceholder} />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 md:gap-6">
                         <div className="group">
-                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Company</label>
-                          <input name="organization" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="Company Name" />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">{t.company}</label>
+                          <input name="organization" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder={t.companyPlaceholder} />
                         </div>
                         <div className="group">
-                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Need</label>
-                          <input name="service" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder="Type..." />
+                          <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">{t.need}</label>
+                          <input name="service" type="text" className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors" placeholder={t.needPlaceholder} />
                         </div>
                       </div>
 
                       <div className="group">
-                        <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">Message *</label>
-                        <textarea name="message" required rows={2} className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors resize-none md:min-h-[100px]" placeholder="Tell me about your project..." />
+                        <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-1 md:mb-2 uppercase tracking-widest">{t.message}</label>
+                        <textarea name="message" required rows={2} className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-2 text-sm md:text-base text-white focus:outline-none focus:border-white transition-colors resize-none md:min-h-[100px]" placeholder={t.messagePlaceholder} />
                       </div>
 
                       <div className="pt-2 md:pt-4 pb-4 md:pb-12 overflow-visible">
@@ -155,18 +205,18 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                             type="submit" 
                             className="w-full md:w-auto px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 disabled:bg-neutral-600 disabled:text-white/50 transition-colors uppercase tracking-widest text-xs md:text-sm relative z-10"
                           >
-                            {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                            {status === 'submitting' ? t.sending : t.send}
                           </button>
                         </MagneticButton>
                         {status === 'error' && (
-                          <p className="mt-2 md:mt-4 text-[10px] md:text-xs font-mono text-red-500 uppercase tracking-widest">Something went wrong. Please try again.</p>
+                          <p className="mt-2 md:mt-4 text-[10px] md:text-xs font-mono text-red-500 uppercase tracking-widest">{t.error}</p>
                         )}
                       </div>
                       
                       {/* MOBILE ONLY: Contact & Socials integrated into form flow */}
                       <div className="md:hidden mt-8 pt-6 border-t border-white/10 flex flex-col gap-8 pb-10">
                         <div>
-                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">Contact Details</h3>
+                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">{t.contactDetails}</h3>
                           <div className="space-y-2">
                             <a href="mailto:alanayalag@gmail.com" className="block text-sm text-white hover:text-white/70 transition-colors">
                               alanayalag@gmail.com
@@ -176,7 +226,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                         </div>
 
                         <div>
-                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">Socials</h3>
+                          <h3 className="text-[10px] font-mono text-white/50 mb-4 uppercase tracking-widest">{t.socials}</h3>
                           <div className="flex flex-row flex-wrap gap-6">
                             <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">LinkedIn</a>
                             <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-xs font-mono tracking-widest uppercase text-white hover:text-white/70 transition-colors">GitHub</a>
@@ -194,7 +244,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
               {/* DESKTOP ONLY: Side Column Contact Info */}
               <div className="hidden md:flex md:w-1/3 flex-col justify-start md:pt-14 gap-10">
                 <div>
-                  <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">Contact Details</h3>
+                  <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">{t.contactDetails}</h3>
                   <div className="space-y-4">
                     <a href="mailto:alanayalag@gmail.com" className="block text-xl md:text-2xl text-white hover:text-white/70 transition-colors">
                       alanayalag@gmail.com
@@ -204,7 +254,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">Socials</h3>
+                  <h3 className="text-sm font-mono text-white/50 mb-6 uppercase tracking-widest">{t.socials}</h3>
                   <div className="flex flex-col gap-4">
                     <a href="https://www.linkedin.com/in/alan-ayala-garcia/" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">LinkedIn</a>
                     <a href="https://github.com/AlanAAG" target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-white/70 transition-colors">GitHub</a>

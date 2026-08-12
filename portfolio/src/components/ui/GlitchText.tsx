@@ -9,6 +9,11 @@ export default function GlitchText({ children, className = "" }: { children: str
   const [isHovering, setIsHovering] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    setText(children);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }, [children]);
+
   const startScramble = () => {
     setIsHovering(true);
     let iteration = 0;

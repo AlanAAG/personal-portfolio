@@ -4,10 +4,34 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ContactModal from '@/components/ui/ContactModal';
 import Image from 'next/image';
+import { useLang } from '@/lib/i18n';
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { lang } = useLang();
   const year = new Date().getFullYear();
+
+  const t = lang === 'es'
+    ? {
+        tagline: 'Fundador Técnico Impulsado por IA',
+        founder: 'Fundador',
+        home: 'Inicio',
+        about: 'Acerca de Mí',
+        blog: 'Blog',
+        certifications: 'Certificaciones',
+        contact: 'Contacto',
+        rights: 'Todos los derechos reservados.',
+      }
+    : {
+        tagline: 'AI-Driven Technical Founder',
+        founder: 'Founder',
+        home: 'Home',
+        about: 'About Me',
+        blog: 'Blog',
+        certifications: 'Certifications',
+        contact: 'Contact',
+        rights: 'All rights reserved.',
+      };
 
   return (
     <>
@@ -19,7 +43,7 @@ export default function Footer() {
             {/* Desktop Brand */}
             <div className="hidden md:flex flex-col items-start text-left">
               <span className="text-3xl font-bold font-sans tracking-tighter">ALAN AYALA</span>
-              <span className="text-sm font-mono text-white/50 tracking-widest uppercase mt-2">AI-Driven Technical Founder</span>
+              <span className="text-sm font-mono text-white/50 tracking-widest uppercase mt-2">{t.tagline}</span>
             </div>
 
             {/* Mobile Brand & Nav (Row Layout) */}
@@ -30,30 +54,34 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-lg font-bold font-sans tracking-tight leading-none">ALAN AYALA</span>
-                  <span className="text-[9px] font-mono text-white/50 tracking-widest uppercase mt-1">Founder</span>
+                  <span className="text-[9px] font-mono text-white/50 tracking-widest uppercase mt-1">{t.founder}</span>
                 </div>
               </div>
               <div className="flex flex-col gap-2 items-end">
-                <Link href="/" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">Home</Link>
-                <Link href="/info" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">About Me</Link>
+                <Link href="/" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">{t.home}</Link>
+                <Link href="/info" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">{t.about}</Link>
+                <Link href="/blog" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">{t.blog}</Link>
+                <Link href="/certifications" className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300">{t.certifications}</Link>
                 <button 
                   onClick={() => setIsModalOpen(true)} 
                   className="font-mono text-[9px] tracking-[0.2em] uppercase text-white font-bold"
                 >
-                  Contact
+                  {t.contact}
                 </button>
               </div>
             </div>
 
             {/* Desktop Quick Navigation Links & Highlighted Contact Button */}
             <div className="hidden md:flex flex-row items-center gap-10 font-mono text-xs tracking-widest uppercase text-white/50">
-              <Link href="/" className="hover:text-white transition-colors duration-300">Home</Link>
-              <Link href="/info" className="hover:text-white transition-colors duration-300">About Me</Link>
-              <button 
+              <Link href="/" className="hover:text-white transition-colors duration-300">{t.home}</Link>
+              <Link href="/info" className="hover:text-white transition-colors duration-300">{t.about}</Link>
+              <Link href="/blog" className="hover:text-white transition-colors duration-300">{t.blog}</Link>
+              <Link href="/certifications" className="hover:text-white transition-colors duration-300">{t.certifications}</Link>
+              <button
                 onClick={() => setIsModalOpen(true)} 
                 className="px-6 py-2.5 ml-4 border border-white text-white font-bold rounded-full hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
               >
-                Contact
+                {t.contact}
               </button>
             </div>
           </div>
@@ -69,7 +97,7 @@ export default function Footer() {
 
           {/* Centered Copyright Below */}
           <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase text-center">
-            © {year} Alan Ayala. All rights reserved.
+            © {year} Alan Ayala. {t.rights}
           </span>
 
         </div>
