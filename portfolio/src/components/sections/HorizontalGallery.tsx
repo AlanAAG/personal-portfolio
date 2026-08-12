@@ -175,7 +175,7 @@ export default function HorizontalGallery() {
               {lang === 'es' ? (<>¿Buscas todos<br />los detalles?</>) : (<>Looking for<br />the full details?</>)}
             </h3>
             <a 
-              href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}
+              href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/f_pdf/cv`}
               target="_blank" 
               rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-black font-semibold font-mono text-xs uppercase tracking-[0.2em] transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] rounded-full"
@@ -244,7 +244,7 @@ export default function HorizontalGallery() {
                   {lang === 'es' ? 'Ver todos los detalles' : 'View full details'}
                 </h3>
                 <a 
-                  href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/cv`}
+                  href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/f_pdf/cv`}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-white text-black font-bold font-mono text-[10px] uppercase tracking-widest rounded-full shadow-lg shrink-0 text-center hover:scale-105 transition-transform"

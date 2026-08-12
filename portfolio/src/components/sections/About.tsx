@@ -222,7 +222,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
         <div className="lg:hidden w-full mb-4 rounded-xl overflow-hidden aspect-video border border-white/10 relative">
           {data.mediaType === 'video' ? (
             <video
-              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
+              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
               autoPlay
               loop
               muted
@@ -284,7 +284,7 @@ const TimelineNode = ({ data, index }: { data: any; index: number }) => {
         )}
         {data.mediaType === 'video' ? (
           <video
-            src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
+            src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/video/upload/f_auto,q_auto,vc_auto,c_limit,w_720/${data.mediaId || `experience_${index + 1}`}`}
             autoPlay
             loop
             muted

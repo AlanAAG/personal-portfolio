@@ -73,7 +73,7 @@ const projectsData: Record<string, any> = {
       { label: { en: "Website", es: "Sitio Web" }, url: "https://tiora.co/" },
       { label: "Instagram", url: "https://www.instagram.com/tiora.official/" }
     ],
-    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/tiora-pitchdeck`
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/f_pdf/tiora-pitchdeck`
   },
   "professor-ai": {
     title: "Professor AI",
@@ -105,7 +105,7 @@ const projectsData: Record<string, any> = {
       { label: { en: "Website", es: "Sitio Web" }, url: "https://asktetr.com/" }
     ],
     images: ["gitex"],
-    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/professor-ai-pitchdeck`
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/f_pdf/professor-ai-pitchdeck`
   },
   "beyond-common": {
     title: "Beyond Common",
@@ -131,7 +131,7 @@ const projectsData: Record<string, any> = {
       { label: "Instagram", url: "https://www.instagram.com/beyondcommonstore/" }
     ],
     images: ["bc_1?v=2"],
-    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_pdf/beyond-common-pitchdeck`
+    pitchdeck: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/f_pdf/beyond-common-pitchdeck`
   },
   "wardrobe-assistant": {
     title: "AI Wardrobe & Travel Assistant",

@@ -19,7 +19,7 @@ export default function CloudVideo({
   muted?: boolean;
   playsInline?: boolean;
 }) {
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd';
   
   // Smart Fallback logic matches the Image loader
   const isLocal = !cloudName || cloudName === 'your-cloud-name' || src.startsWith('/');

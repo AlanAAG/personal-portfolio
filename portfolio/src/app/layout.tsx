@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   description:
     "AI-Driven Technical Founder engineering scalable solutions across continents. Based globally.",
   icons: {
-    icon: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/favicon`,
+    icon: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/v1/favicon`,
   },
 };
 

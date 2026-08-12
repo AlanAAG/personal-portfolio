@@ -6,7 +6,7 @@ import { X, Play } from 'lucide-react';
 
 export default function VideoPlayer({ videoId }: { videoId: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd';
 
   return (
     <>

@@ -7,7 +7,7 @@ export default function cloudinaryLoader({
   width: number;
   quality?: number;
 }) {
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd';
 
   // Smart Fallback: Local dev or missing cloud name
   // Bypasses Cloudinary transforms for standard statically served files (e.g. /images/profile.png)
