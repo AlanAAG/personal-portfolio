@@ -13,8 +13,8 @@ export default function Footer() {
 
   const t = lang === 'es'
     ? {
-        tagline: 'Fundador Técnico Impulsado por IA',
-        founder: 'Fundador',
+        tagline: 'Especialista en Transformación Digital de Negocios',
+        founder: 'Transformación Digital',
         home: 'Inicio',
         about: 'Acerca de Mí',
         blog: 'Blog',
@@ -23,8 +23,8 @@ export default function Footer() {
         rights: 'Todos los derechos reservados.',
       }
     : {
-        tagline: 'AI-Driven Technical Founder',
-        founder: 'Founder',
+        tagline: 'Digital Business Transformation Specialist',
+        founder: 'Digital Transformation',
         home: 'Home',
         about: 'About Me',
         blog: 'Blog',

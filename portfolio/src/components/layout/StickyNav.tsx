@@ -48,7 +48,7 @@ export default function StickyNav() {
     const updateTime = () => {
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'America/Mexico_City',
+        timeZone: 'Asia/Shanghai',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
@@ -71,7 +71,7 @@ export default function StickyNav() {
       >
         {/* Left: Location & Time */}
         <div className="flex items-center gap-2 md:gap-4 font-mono text-[10px] md:text-xs uppercase tracking-widest w-1/4 md:w-1/3">
-          <span className="hidden md:inline">{lang === 'es' ? 'Ciudad de México, CST' : 'Mexico City, CST'}</span>
+          <span className="hidden md:inline">{lang === 'es' ? 'Shanghái, China' : 'Shanghai, China'}</span>
           <span>{time}</span>
           <span className="hidden md:inline text-white/20">·</span>
           <LangToggle className="hidden md:flex" />

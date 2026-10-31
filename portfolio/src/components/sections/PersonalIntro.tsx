@@ -103,10 +103,10 @@ export default function PersonalIntro() {
           
           <div className="mb-10 flex flex-col font-sans font-bold tracking-tighter text-[10vw] md:text-[6.5vw] lg:text-[5vw] leading-[0.9] text-white">
             <div className="block">
-              <ScrollRevealText text={lang === 'es' ? 'FUNDADOR TÉCNICO' : 'AI-DRIVEN'} progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
+              <ScrollRevealText text={lang === 'es' ? 'TRANSFORMACIÓN' : 'DIGITAL'} progress={scrollYProgress} delayStart={0} delayEnd={0.2} />
             </div>
             <div className="block lg:-ml-2 mt-2">
-              <ScrollRevealText text={lang === 'es' ? 'IMPULSADO POR IA' : 'TECHNICAL FOUNDER'} progress={scrollYProgress} delayStart={0.1} delayEnd={0.3} className="font-serif italic tracking-tight font-normal text-white/90" />
+              <ScrollRevealText text={lang === 'es' ? 'DIGITAL' : 'TRANSFORMATION'} progress={scrollYProgress} delayStart={0.1} delayEnd={0.3} className="font-serif italic tracking-tight font-normal text-white/90" />
             </div>
           </div>
            
@@ -114,8 +114,8 @@ export default function PersonalIntro() {
           <div className="text-base md:text-xl lg:text-2xl leading-relaxed text-white/80 font-sans font-light">
             <ScrollRevealText 
               text={lang === 'es'
-                ? 'Soy estudiante de Management & Technology en Tetr College of Business, actualmente en una rotación global por Emiratos Árabes Unidos, India y más allá. Mi trabajo vive en la frontera entre el desarrollo full-stack y la creación de empresas. Ya sea construyendo plataformas escalables de tutores con IA o lanzando marcas D2C en nuevos mercados, me mueve un solo objetivo: crear productos que resuelvan problemas reales con código elegante.'
-                : 'I am a Management & Technology student at Tetr College of Business, currently navigating a global rotation across the UAE, India, and beyond. My work lives at the edge of Full-Stack Development and Venture Building. Whether I’m engineering scalable AI Tutor platforms or launching D2C brands in new markets, I am driven by a single goal: building products that solve real problems with elegant code.'}
+                ? 'Me especializo en transformación digital de negocios. Uso IA, software y estrategia de producto para hacer más eficientes las operaciones y generar valor económico para las empresas. He creado sistemas multiagente y RAG, vendido software educativo a instituciones y entregado productos digitales a más de 35 clientes.'
+                : 'I specialize in digital business transformation. I use AI, software and product strategy to make operations more efficient and create economic value for businesses. I have built multi-agent and RAG systems, sold EdTech software to institutions, and delivered digital products for 35+ clients.'}
               progress={scrollYProgress} 
               delayStart={0.2} 
               delayEnd={0.9} 

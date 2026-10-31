@@ -9,13 +9,13 @@ import PitchdeckEmbed from '@/components/ui/PitchdeckEmbed';
 import { useLang, l } from '@/lib/i18n';
 const projectsData: Record<string, any> = {
   "maestraia": {
-    title: "MaestraIA",
-    role: { en: "Founder & Developer", es: "Fundador y Desarrollador" },
-    timeline: { en: "May 2026 - Present", es: "Mayo 2026 - Presente" },
+    title: "MaestraAI",
+    role: { en: "Founder and Full-Stack Engineer", es: "Fundador e Ingeniero Full-Stack" },
+    timeline: { en: "January 2026 - Present", es: "Enero 2026 - Presente" },
     location: { en: "Mexico City, Mexico", es: "Ciudad de México, México" },
     summary: {
-      en: "Built an all-in-one AI platform for preschool English teachers in Mexico, generating curriculum-compliant lesson plans, classroom materials, and qualitative student reports.",
-      es: "Plataforma integral de IA para maestras de inglés preescolar en México, que genera planeaciones alineadas al currículo, materiales para el aula y reportes cualitativos de alumnos."
+      en: "Built an AI teaching platform used by 100+ teachers across 5+ schools for curriculum-grounded planning, classroom materials, and student tracking.",
+      es: "Construí una plataforma de IA utilizada por más de 100 docentes en más de 5 escuelas para planeación curricular, materiales de clase y seguimiento de alumnos."
     },
     bullets: [
       {
@@ -35,7 +35,7 @@ const projectsData: Record<string, any> = {
         es: "Row Level Security en las 17 tablas de Supabase y respuestas de Claude en streaming desde el servidor, además de sincronización con Richmond Learning Platform vía importación CSV y una extensión de Chrome."
       }
     ],
-    stack: ["Next.js 14", "TypeScript", "Supabase", "Claude API", "RAG", "Tailwind CSS", "react-pdf"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Claude API", "RAG", "Tailwind CSS", "react-pdf"],
     video: "MaestraIA_Demo",
     images: ["maestraia_1", "maestraia_2", "maestra_ia_3"],
     links: [
@@ -45,25 +45,25 @@ const projectsData: Record<string, any> = {
   },
   "tiora": {
     title: "Tiora",
-    role: { en: "Co-Founder", es: "Cofundador" },
-    timeline: { en: "January 2026 - Present", es: "Enero 2026 - Presente" },
+    role: { en: "Co-Founder and Full-Stack Developer", es: "Cofundador y Desarrollador Full-Stack" },
+    timeline: { en: "January 2026 - May 2026", es: "Enero 2026 - Mayo 2026" },
     location: { en: "New Delhi, India", es: "Nueva Delhi, India" },
     summary: {
-      en: "Architected a headless e-commerce stack on Shopify and Shiprocket, validating PMF with $3k+ revenue in 21 days.",
-      es: "Arquitectura de e-commerce headless sobre Shopify y Shiprocket, validando PMF con más de $3k en ingresos en 21 días."
+      en: "Built commerce and operations systems for a demi-fine jewellery brand that generated $15,000+ in four months.",
+      es: "Construí sistemas comerciales y operativos para una marca de joyería que generó más de $15,000 en cuatro meses."
     },
     bullets: [
       {
-        en: "Digitized operations by building a headless e-commerce stack, reducing supply chain lead time from 7 days to 3 hours and validating PMF with $3,000+ first-month revenue.",
-        es: "Digitalicé la operación con un stack de e-commerce headless, reduciendo el lead time de la cadena de suministro de 7 días a 3 horas y validando PMF con más de $3,000 de ingresos en el primer mes."
+        en: "Built a headless commerce stack and digitized inventory, fulfilment, and customer workflows, reducing supply-chain lead time from seven days to three hours.",
+        es: "Construí una plataforma de comercio headless y digitalicé inventario, entregas y atención al cliente, reduciendo el tiempo de suministro de siete días a tres horas."
       },
       {
-        en: "Optimized frontend performance and GTM strategy, resulting in 30% boost in conversion rates.",
-        es: "Optimicé el rendimiento del frontend y la estrategia GTM, logrando un aumento del 30% en la tasa de conversión."
+        en: "Digitized inventory and fulfilment workflows while improving the storefront and customer journey.",
+        es: "Digitalicé inventario y entregas mientras mejoraba la tienda y la experiencia del cliente."
       },
       {
-        en: "Increased online visibility by 60% by securing 4 influencer promotion partnerships.",
-        es: "Incrementé la visibilidad online en 60% al cerrar 4 alianzas de promoción con influencers."
+        en: "The brand generated $15,000+ during its first four months.",
+        es: "La marca generó más de $15,000 durante sus primeros cuatro meses."
       }
     ],
     stack: ["Shopify Headless", "React.js", "Supply Chain Ops"],
@@ -77,30 +77,29 @@ const projectsData: Record<string, any> = {
   },
   "professor-ai": {
     title: "Professor AI",
-    role: { en: "Co-Founder & Lead Developer", es: "Cofundador y Desarrollador Líder" },
+    role: { en: "Co-Founder and Lead Engineer", es: "Cofundador e Ingeniero Principal" },
     timeline: { en: "October 2025 - Present", es: "Octubre 2025 - Presente" },
     location: { en: "UAE, India", es: "EAU, India" },
     summary: {
-      en: "Built a scalable RAG engine parsing complex PDFs to provide instant, personalized academic support for 250+ students.",
-      es: "Motor RAG escalable que procesa PDFs complejos para brindar apoyo académico instantáneo y personalizado a más de 250 estudiantes."
+      en: "Built and sold an agentic tutoring platform to two educational institutions, now serving 400+ students.",
+      es: "Construí y vendí una plataforma de tutoría con agentes a dos instituciones educativas que ahora atiende a más de 400 estudiantes."
     },
     bullets: [
       {
-        en: "Architected a scalable RAG system powered by FastAPI and Supabase, implementing a custom RRF algorithm to support 200+ students with instant academic context.",
-        es: "Arquitectura de un sistema RAG escalable con FastAPI y Supabase, implementando un algoritmo RRF personalizado para dar contexto académico instantáneo a más de 200 estudiantes."
+        en: "Designed a FastAPI, Supabase, PostgreSQL, and pgvector retrieval system combining RRF and MMR to ground answers in course material for 400+ students.",
+        es: "Diseñé un sistema de recuperación con FastAPI, Supabase, PostgreSQL y pgvector que combina RRF y MMR para fundamentar respuestas en materiales de cursos para más de 400 estudiantes."
       },
       {
         en: "Engineered advanced context-handling logic (Query Condensing and Map-Reduce), optimized through rigorous testing to handle complex, multi-turn conversations.",
         es: "Lógica avanzada de manejo de contexto (Query Condensing y Map-Reduce), optimizada mediante pruebas rigurosas para manejar conversaciones complejas de múltiples turnos."
       },
       {
-        en: "Automated CI/CD pipelines for data ingestion, decreasing deployment time from 6h to 30 min.",
-        es: "Pipelines de CI/CD automatizados para la ingesta de datos, reduciendo el tiempo de despliegue de 6 h a 30 min."
+        en: "Automated content ingestion through CI/CD pipelines.",
+        es: "Automaticé la ingesta de contenido mediante pipelines de CI/CD."
       }
     ],
     stack: ["FastAPI", "Supabase Vector", "React", "Python", "CI/CD"],
     video: "ai_tutor_demo",
-    acquired: true,
     links: [
       { label: { en: "Website", es: "Sitio Web" }, url: "https://asktetr.com/" }
     ],

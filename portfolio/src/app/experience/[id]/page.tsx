@@ -19,12 +19,12 @@ const experienceData: Record<string, any> = {
     },
     roles: [
       {
-        title: { en: "Founders Office Intern", es: "Practicante en Founders Office" },
+        title: { en: "Development, Product and Founder's Office Intern", es: "Practicante de Desarrollo, Producto y Oficina del Fundador" },
         company: "Magure Inc.",
-        timeline: { en: "Mar 2026 - Present", es: "Mar 2026 - Presente" },
+        timeline: { en: "Mar 2026 - Aug 2026", es: "Mar 2026 - Ago 2026" },
         description: {
-          en: "Engineered and sold 10+ AI workflow automations to third-party enterprises, improving department-specific efficiency by up to 30% while reporting directly to the CEO. Automated ISO 42001, 9001, and 27001 compliance infrastructure, tripling certified coverage across client systems.",
-          es: "Diseñé y vendí más de 10 automatizaciones de flujos de trabajo con IA a empresas externas, mejorando la eficiencia por departamento hasta en 30%, reportando directamente al CEO. Automaticé la infraestructura de cumplimiento ISO 42001, 9001 y 27001, triplicando la cobertura certificada en los sistemas de los clientes."
+          en: "Worked directly with CEO Akhil Koka on product scope, requirements, documentation, and enterprise AI delivery. Built MCP servers, MagOne automations, and Python scripts for 10+ production AI workflows.",
+          es: "Trabajé directamente con el CEO Akhil Koka en alcance de producto, requisitos, documentación y entrega de IA empresarial. Construí servidores MCP, automatizaciones con MagOne y scripts en Python para más de 10 flujos de IA en producción."
         },
         link: "/info#experience"
       },
@@ -43,8 +43,8 @@ const experienceData: Record<string, any> = {
         company: "Academy for Sales Excellence",
         timeline: { en: "Oct 2025 - Feb 2026", es: "Oct 2025 - Feb 2026" },
         description: {
-          en: "Secured 10 recurrent enterprise clients using custom n8n and Python API workflows. Reduced customer support latency by 80% through CRM routing pipelines.",
-          es: "Conseguí 10 clientes empresariales recurrentes con flujos personalizados de n8n y APIs en Python. Reduje la latencia de soporte al cliente en 80% mediante pipelines de enrutamiento en CRM."
+          en: "Built and delivered 10+ custom enterprise AI solutions with Python, n8n, and connected business systems. Supported prospecting, onboarding, implementation, and post-sale maintenance.",
+          es: "Construí y entregué más de 10 soluciones empresariales de IA con Python, n8n y sistemas de negocio. Apoyé prospección, incorporación, implementación y mantenimiento posterior a la venta."
         },
         link: "/info#experience"
       },
@@ -68,26 +68,26 @@ const experienceData: Record<string, any> = {
       es: "Construcción de Marca D2C e Integración de IA en EdTech"
     },
     summary: {
-      en: "Scaling a D2C demi-fine jewellery brand hitting PMF rapidly while anchoring engineering operations for an AI EdTech platform.",
-      es: "Escalando una marca D2C de joyería demi-fine que alcanzó PMF rápidamente, mientras lidero las operaciones de ingeniería de una plataforma EdTech con IA."
+      en: "Built the commerce and operations systems for a D2C jewellery brand while developing an institutional AI tutoring platform.",
+      es: "Construí los sistemas comerciales y operativos de una marca de joyería D2C mientras desarrollaba una plataforma institucional de tutoría con IA."
     },
     roles: [
       {
-        title: { en: "Co-Founder & CTO", es: "Cofundador y CTO" },
+        title: { en: "Co-Founder and Full-Stack Developer", es: "Cofundador y Desarrollador Full-Stack" },
         company: "Tiora (Demi-fine Jewellery)",
-        timeline: { en: "Jan 2026 - Present", es: "Ene 2026 - Presente" },
+        timeline: { en: "Jan 2026 - May 2026", es: "Ene 2026 - Mayo 2026" },
         description: {
-          en: "Validated PMF via $3,000+ revenue in the first month. Reduced COGS by 66% and supply chain lead time from 7 days to 3 hours by negotiating with 110+ international manufacturers.",
-          es: "Validé el PMF con más de $3,000 en ingresos durante el primer mes. Reduje el COGS en 66% y el lead time de la cadena de suministro de 7 días a 3 horas negociando con más de 110 fabricantes internacionales."
+          en: "Built commerce and operations systems for a brand that generated $15,000+ in four months. Digitized inventory and fulfilment workflows, reducing supply-chain lead time from seven days to three hours.",
+          es: "Construí sistemas comerciales y operativos para una marca que generó más de $15,000 en cuatro meses. Digitalicé inventario y entregas, reduciendo el tiempo de suministro de siete días a tres horas."
         }
       },
       {
-        title: { en: "Lead Developer", es: "Desarrollador Líder" },
+        title: { en: "Co-Founder and Lead Engineer", es: "Cofundador e Ingeniero Principal" },
         company: "Professor AI",
         timeline: { en: "Oct 2025 - Present", es: "Oct 2025 - Presente" },
         description: {
-          en: "Architected a scalable RAG system powered by FastAPI and Supabase to support 250+ students with instant, high-accuracy context handling and query condensing.",
-          es: "Diseñé un sistema RAG escalable con FastAPI y Supabase para dar soporte a más de 250 estudiantes, con manejo de contexto instantáneo de alta precisión y condensación de consultas."
+          en: "Built and sold an agentic tutoring platform to two institutions. Its FastAPI, PostgreSQL, and pgvector retrieval system now serves 400+ students.",
+          es: "Construí y vendí una plataforma de tutoría con agentes a dos instituciones. Su sistema de recuperación con FastAPI, PostgreSQL y pgvector ahora atiende a más de 400 estudiantes."
         },
         link: "/info#experience"
       },
@@ -118,14 +118,25 @@ const experienceData: Record<string, any> = {
   "shanghai": {
     title: { en: "Shanghai, China", es: "Shanghái, China" },
     subtitle: {
-      en: "Upcoming Asian Market Rotation",
-      es: "Próxima Rotación en el Mercado Asiático"
+      en: "Technical Product Management at Tetr",
+      es: "Gestión Técnica de Producto en Tetr"
     },
     summary: {
-      en: "Scheduled global immersion focused on scalable manufacturing and supply chain architecture.",
-      es: "Inmersión global programada, enfocada en manufactura escalable y arquitectura de cadenas de suministro."
+      en: "Integrating Professor AI into Tetr College of Business's LMS and improving the user journey and UI/UX for students, teachers, and administrators.",
+      es: "Integro Professor AI al LMS de Tetr College of Business y mejoro la experiencia de usuario y el diseño UI/UX para estudiantes, docentes y administradores."
     },
-    roles: []
+    roles: [
+      {
+        title: { en: "Technical Product Management Intern", es: "Practicante de Gestión Técnica de Producto" },
+        company: "Tetr College of Business",
+        timeline: { en: "Aug 2026 - Present", es: "Ago 2026 - Presente" },
+        description: {
+          en: "Build feedback loops across students, teachers, and administrators; improve token efficiency and RAG reliability; and use analytics to guide product decisions and create value for each stakeholder.",
+          es: "Establezco ciclos de retroalimentación con estudiantes, docentes y administradores; optimizo el uso de tokens y la confiabilidad de RAG; y uso analítica para orientar decisiones de producto y generar valor para cada grupo."
+        },
+        link: "/info#experience"
+      }
+    ]
   },
   "us": {
     title: { en: "United States", es: "Estados Unidos" },

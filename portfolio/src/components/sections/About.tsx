@@ -9,32 +9,44 @@ import { useLang } from '@/lib/i18n';
 
 const timelineData = [
   {
-    year: { en: "Expected 2029", es: "Previsto para 2029" },
-    title: { en: "BMT in Management and Technology", es: "BMT en Administración y Tecnología" },
+    year: { en: "Sep 2025 - Expected May 2029", es: "Sep 2025 - Previsto para mayo de 2029" },
+    title: { en: "Bachelor in Management and Technology", es: "Licenciatura en Management and Technology" },
     entity: "Tetr College of Business",
     location: { en: "Global Rotation", es: "Rotación Global" },
     category: { en: "Education", es: "Educación" },
     description: {
-      en: "Project-based rotational program launching new businesses across UAE, India, Singapore, Ghana, Spain, Europe, and the US.",
-      es: "Programa rotacional basado en proyectos que lanza nuevos negocios en EAU, India, Singapur, Ghana, España, Europa y Estados Unidos."
+      en: "Project-based global program combining technology, entrepreneurship, and business operations. Academic experiences include FITT at IIT Delhi and Fudan University.",
+      es: "Programa global basado en proyectos que combina tecnología, emprendimiento y operaciones. Incluye experiencias académicas en FITT del IIT Delhi y Fudan University."
     },
     mediaId: "experience_1"
   },
   {
-    year: { en: "March 2026 - Present", es: "Marzo 2026 - Presente" },
-    title: { en: "Founders Office Intern", es: "Practicante en Founders Office" },
+    year: { en: "August 2026 - Present", es: "Agosto 2026 - Presente" },
+    title: { en: "Technical Product Management Intern", es: "Practicante de Gestión Técnica de Producto" },
+    entity: "Tetr College of Business",
+    location: { en: "Shanghai, China", es: "Shanghái, China" },
+    category: { en: "Experience", es: "Experiencia" },
+    description: {
+      en: "Integrating Professor AI into Tetr's LMS and improving the user journey and UI/UX. Building feedback loops with students, teachers, and administrators while improving token efficiency, RAG reliability, and usage analytics to create value across the institution.",
+      es: "Integro Professor AI al LMS de Tetr y mejoro la experiencia de usuario y el diseño UI/UX. Establezco ciclos de retroalimentación con estudiantes, docentes y administradores, mientras optimizo el uso de tokens, la confiabilidad de RAG y la analítica para generar valor en toda la institución."
+    },
+    mediaId: "tetr_logo"
+  },
+  {
+    year: { en: "March 2026 - August 2026", es: "Marzo 2026 - Agosto 2026" },
+    title: { en: "Development, Product and Founder's Office Intern", es: "Practicante de Desarrollo, Producto y Oficina del Fundador" },
     entity: "Magure Inc.",
     location: { en: "Dubai, UAE (Remote)", es: "Dubái, EAU (Remoto)" },
     category: { en: "Experience", es: "Experiencia" },
     description: {
-      en: "Engineered and sold 10+ AI workflow automations to third-party enterprises, improving department-specific efficiency by up to 30% while reporting directly to the CEO. Automated compliance infrastructure applying ISO 42001 (AI Management), ISO 9001 (Quality), and ISO 27001 (Information Security), tripling certified coverage across client systems.",
-      es: "Diseñé y vendí más de 10 automatizaciones de flujos de trabajo con IA a empresas externas, mejorando la eficiencia por departamento hasta en 30% y reportando directamente al CEO. Automaticé infraestructura de cumplimiento aplicando ISO 42001 (Gestión de IA), ISO 9001 (Calidad) e ISO 27001 (Seguridad de la Información), triplicando la cobertura certificada en los sistemas de clientes."
+      en: "Worked directly with CEO Akhil Koka on product scope, requirements, documentation, and enterprise AI delivery. Built custom MCP servers, MagOne automations, and Python scripts; contributed to 10+ production AI workflows.",
+      es: "Trabajé directamente con el CEO Akhil Koka en alcance de producto, requisitos, documentación y entrega de IA empresarial. Construí servidores MCP, automatizaciones con MagOne y scripts en Python; contribuí a más de 10 flujos de IA en producción."
     },
     mediaId: "Magure"
   },
   {
-    year: { en: "March 2026 - Present", es: "Marzo 2026 - Presente" },
-    title: { en: "AI Architect Intern", es: "Practicante de Arquitectura de IA" },
+    year: { en: "March 2026 - August 2026", es: "Marzo 2026 - Agosto 2026" },
+    title: { en: "Software Engineering Intern", es: "Practicante de Ingeniería de Software" },
     entity: "CraftOS",
     location: { en: "Fukuoka, Japan (Remote)", es: "Fukuoka, Japón (Remoto)" },
     category: { en: "Experience", es: "Experiencia" },
@@ -45,14 +57,14 @@ const timelineData = [
     mediaId: "CraftOS"
   },
   {
-    year: { en: "Jan 2026 - Present", es: "Enero 2026 - Presente" },
-    title: { en: "Co-Founder", es: "Cofundador" },
+    year: { en: "Jan 2026 - May 2026", es: "Enero 2026 - Mayo 2026" },
+    title: { en: "Co-Founder and Full-Stack Developer", es: "Cofundador y Desarrollador Full-Stack" },
     entity: "Tiora (Demi-fine Jewellery)",
     location: { en: "New Delhi, India", es: "Nueva Delhi, India" },
     category: { en: "Experience", es: "Experiencia" },
     description: {
-      en: "Digitized operations by building a headless e-commerce stack, reducing supply chain lead time from 7 days to 3 hours and validating PMF with $3,000+ first-month revenue.",
-      es: "Digitalicé las operaciones construyendo un stack de e-commerce headless, reduciendo el tiempo de la cadena de suministro de 7 días a 3 horas y validando PMF con más de $3,000 de ingresos en el primer mes."
+      en: "Built a headless commerce stack and digitized inventory, fulfilment, and customer workflows. The brand generated $15,000+ in four months while supply-chain lead time fell from seven days to three hours.",
+      es: "Construí una plataforma de comercio headless y digitalicé inventario, entregas y atención al cliente. La marca generó más de $15,000 en cuatro meses y el tiempo de suministro bajó de siete días a tres horas."
     },
     mediaType: "video",
     mediaId: "experience_2",
@@ -60,13 +72,13 @@ const timelineData = [
   },
   {
     year: { en: "Oct 2025 - Present", es: "Octubre 2025 - Presente" },
-    title: { en: "Lead Developer & Co-Founder", es: "Desarrollador Líder y Cofundador" },
+    title: { en: "Co-Founder and Lead Engineer", es: "Cofundador e Ingeniero Principal" },
     entity: "Professor AI",
     location: { en: "UAE, India", es: "EAU, India" },
     category: { en: "Projects", es: "Proyectos" },
     description: {
-      en: "Architected a scalable RAG system powered by FastAPI and Supabase to support 250+ students with instant, high-accuracy context handling and query condensing.",
-      es: "Diseñé un sistema RAG escalable con FastAPI y Supabase para atender a más de 250 estudiantes con manejo de contexto instantáneo de alta precisión y condensación de consultas."
+      en: "Built and sold an agentic tutoring platform to two educational institutions. Its FastAPI, PostgreSQL, and pgvector retrieval system now serves 400+ students.",
+      es: "Construí y vendí una plataforma de tutoría con agentes a dos instituciones educativas. Su sistema de recuperación con FastAPI, PostgreSQL y pgvector ahora atiende a más de 400 estudiantes."
     },
     mediaType: "video",
     mediaId: "experience_3",
@@ -79,8 +91,8 @@ const timelineData = [
     location: { en: "Dubai, UAE", es: "Dubái, EAU" },
     category: { en: "Experience", es: "Experiencia" },
     description: {
-      en: "Secured 10 recurrent enterprise clients by creating custom AI workflows with n8n and Python. Automated CRM routing pipelines, reducing customer support latency by 80%.",
-      es: "Conseguí 10 clientes empresariales recurrentes creando flujos de trabajo de IA personalizados con n8n y Python. Automaticé pipelines de enrutamiento de CRM, reduciendo la latencia del soporte al cliente en 80%."
+      en: "Built and delivered 10+ custom enterprise AI solutions with Python, n8n, and connected business systems. Supported prospecting, onboarding, implementation, and post-sale maintenance.",
+      es: "Construí y entregué más de 10 soluciones empresariales de IA con Python, n8n y sistemas de negocio. Apoyé prospección, incorporación, implementación y mantenimiento posterior a la venta."
     },
     mediaId: "experience_4"
   },
@@ -361,15 +373,15 @@ export default function About() {
           <h2 className="text-[10px] md:text-xs font-mono text-[#6339FF] mb-6 md:mb-8 uppercase tracking-widest">{lang === 'es' ? 'Quién Soy' : 'Who I Am'}</h2>
           <p className="text-2xl md:text-5xl lg:text-6xl font-light leading-tight text-white/90 font-sans tracking-tight mb-8">
             {lang === 'es' ? (
-              <>Soy un emprendedor de 20 años y <span className="font-bold">Constructor Global</span> creando soluciones escalables a través de continentes.</>
+              <>Uso la tecnología para lograr <span className="font-bold">operaciones más eficientes y negocios con más valor.</span></>
             ) : (
-              <>I am a 20-year-old entrepreneur and <span className="font-bold">Global Builder</span> engineering scalable solutions across continents.</>
+              <>I use technology to make <span className="font-bold">business operations more efficient and valuable.</span></>
             )}
           </p>
           <p className="text-base md:text-2xl font-light leading-relaxed text-white/50 font-sans max-w-3xl">
             {lang === 'es'
-              ? 'Me apasiona sumergirme en nuevas culturas y perseguir retos imposibles. Ya sea diseñando sistemas profundos de IA o lanzando marcas D2C, estoy constantemente aprendiendo, construyendo y creciendo hoy, para que mañana pueda generar un impacto definitivo.'
-              : 'I thrive on immersing myself in new cultures and chasing impossible challenges. Whether I am architecting deep AI systems or launching D2C brands, I am constantly learning, building, and growing today, so that tomorrow, I can make a definitive impact.'}
+              ? 'Me especializo en transformación digital de negocios. Combino ingeniería, producto y operaciones para convertir tecnología en eficiencia operativa y valor económico. He desarrollado sistemas de IA, vendido software educativo a instituciones y entregado productos digitales a más de 35 clientes.'
+              : 'I specialize in digital business transformation. I combine engineering, product and operations to turn technology into operational efficiency and economic value. I have built AI systems, sold EdTech software to institutions, and delivered digital products for 35+ clients.'}
           </p>
           <Link
             href="/certifications"

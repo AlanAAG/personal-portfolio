@@ -8,14 +8,14 @@ import { useLang } from '@/lib/i18n';
 
 const projects = [
   {
-    title: "MaestraIA",
+    title: "MaestraAI",
     slug: "maestraia",
     category: { en: "EdTech SaaS", es: "SaaS EdTech" },
     description: {
-      en: "All-in-one platform for preschool English teachers in Mexico: AI lesson plans, classroom materials, and NEM-aligned student tracking.",
-      es: "Plataforma integral para maestras de inglés preescolar en México: planeaciones con IA, materiales de aula y seguimiento de alumnos alineado a la NEM."
+      en: "AI teaching platform used by 100+ teachers across 5+ schools for curriculum-grounded planning, classroom materials, and student tracking.",
+      es: "Plataforma de IA utilizada por más de 100 docentes en más de 5 escuelas para planeaciones curriculares, materiales de clase y seguimiento de alumnos."
     },
-    stack: ["Next.js 14", "Supabase", "Claude API", "TypeScript"],
+    stack: ["Next.js", "Supabase", "Claude API", "TypeScript"],
     color: "#1a1a1a",
     image: "MaestraIA"
   },
@@ -24,8 +24,8 @@ const projects = [
     slug: "tiora",
     category: { en: "D2C Demi-fine Jewellery", es: "Joyería Demi-fine D2C" },
     description: {
-      en: "Architected a headless e-commerce stack on Shopify and Shiprocket, validating PMF with $3k+ revenue in 21 days.",
-      es: "Arquitectura de e-commerce headless sobre Shopify y Shiprocket, validando PMF con más de $3k en ingresos en 21 días."
+      en: "Built commerce and operations systems for a jewellery brand that generated $15,000+ in four months and cut supply lead time from seven days to three hours.",
+      es: "Construí sistemas comerciales y operativos para una marca de joyería que generó más de $15,000 en cuatro meses y redujo el tiempo de suministro de siete días a tres horas."
     },
     stack: ["Shopify Headless", "React.js", "Supply Chain Ops"],
     color: "#222222",
@@ -36,8 +36,8 @@ const projects = [
     slug: "professor-ai",
     category: { en: "EdTech Platform", es: "Plataforma EdTech" },
     description: {
-      en: "Built a scalable RAG engine parsing complex PDFs to provide instant, personalized academic support for 250+ students.",
-      es: "Motor RAG escalable que procesa PDFs complejos para brindar apoyo académico instantáneo y personalizado a más de 250 estudiantes."
+      en: "Built and sold an agentic tutoring platform to two institutions, now serving 400+ students.",
+      es: "Construí y vendí una plataforma de tutoría con agentes a dos instituciones que ahora atiende a más de 400 estudiantes."
     },
     stack: ["FastAPI", "Supabase Vector", "React", "Python"],
     color: "#1a1a1a",

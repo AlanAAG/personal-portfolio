@@ -29,9 +29,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alan Ayala, AI-Driven Technical Founder",
+  title: "Alan Ayala | Digital Business Transformation Specialist",
   description:
-    "AI-Driven Technical Founder engineering scalable solutions across continents. Based globally.",
+    "Digital business transformation specialist using AI, software and product strategy to improve operational efficiency and create economic value for businesses.",
   icons: {
     icon: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dqfmytikd'}/image/upload/v1/favicon`,
   },

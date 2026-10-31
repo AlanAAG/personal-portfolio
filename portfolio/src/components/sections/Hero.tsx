@@ -208,7 +208,7 @@ export default function Hero() {
           >
             <span className="h-[1px] w-8 md:w-12 bg-white/30" />
             <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-white/50 font-inter text-center">
-              {lang === 'es' ? 'Fundador Técnico Impulsado por IA' : 'AI-Driven Technical Founder'}
+              {lang === 'es' ? 'Especialista en Transformación Digital de Negocios' : 'Digital Business Transformation Specialist'}
             </p>
             <span className="h-[1px] w-8 md:w-12 bg-white/30" />
           </motion.div>

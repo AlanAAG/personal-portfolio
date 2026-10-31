@@ -33,7 +33,7 @@ export const posts: BlogPost[] = [
     title: "“Professor AI”: Building an Autonomous Educational Intelligence Platform",
     date: "December 2025",
     mediumUrl: "https://medium.com/age-of-awareness/professor-ai-building-an-autonomous-educational-intelligence-platform-0efca42ea90b",
-    intro: "Most RAG tutorials show you how to chat with a PDF; this is what it takes to build a system that teaches like your actual professors, personality, curriculum, and all. The full architecture behind the platform now supporting 250+ students at Tetr."
+    intro: "Most RAG tutorials show you how to chat with a PDF; this is what it takes to build a system grounded in real course material. The platform now serves 400+ students across two educational institutions."
   },
   {
     slug: "ai-driven-divergence",
