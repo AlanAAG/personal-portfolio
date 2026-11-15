@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "weixin-super-app-strategy",
+    title: "The Super-App Was the Outcome, Not the Strategy",
+    date: "November 2026",
+    mediumUrl: "https://medium.com/@alanayalag/the-super-app-was-the-outcome-not-the-strategy-a0617bb1ab81?sharedUserId=alanayalag",
+    intro: "How WeChat turned everyday conversations into a digital ecosystem across China"
+  },
+  {
     slug: "ai-agent-authentication",
     title: "Your AI Agent Can't Log Into Anything. Here's How the Industry Is Fixing It.",
     date: "June 2026",
